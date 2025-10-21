@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:flashMessages/>
+    <div class="mt-6 mb-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <f:if condition="{projects -> f:count()} > 0">
+            <f:for each="{projects}" as="project" key="index">
+                <f:variable name="projectImage" value="EXT:hio_typo3_connector_wtl/Resources/Public/Images/projects/{index % 6}.jpg"/>
+                <f:render partial="Project/Highlights/Item" arguments="{project: project, projectImage: projectImage}"/>
+            </f:for>
+        </f:if>
+    </div>
+</f:section>
+
+</html>

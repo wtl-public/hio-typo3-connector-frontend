@@ -1,0 +1,31 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+<f:layout name="Default" />
+
+<f:flashMessages/>
+<f:section name="Main">
+    <div class="featured-projects">
+        <div class="tx-hio-typo3-connector-wtl-featured-projects">
+            <!-- Slider main container -->
+            <div class="swiper mt-6 mb-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <f:for each="{children_101}" as="child">
+                        <div class="swiper-slide">
+                            {child.renderedContent -> f:format.raw()}
+                        </div>
+                    </f:for>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

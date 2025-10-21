@@ -1,0 +1,22 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{projectStatusStatistics}">
+    <div class="container border-b border-gray-200 mx-auto pb-4">
+        <h3 class="text-2xl xl:text-3xl mb-6 font-semibold text-left">
+            <f:translate key="hio.show.person.projectStatusStats" extensionName="HioTypo3ConnectorWtl" />
+        </h3>
+        <div class="flex flex-wrap -m-4 mb-3 text-left">
+            <f:for each="{projectStatusStatistics}" as="statusValue" key="statusName">
+                <div class="px-4 w-1/2">
+                    <p class="leading-relaxed font-normal py-1">
+                        {statusName} ({statusValue})
+                    </p>
+                </div>
+            </f:for>
+        </div>
+    </div>
+</f:if>
+
+</html>

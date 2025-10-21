@@ -1,0 +1,17 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{habilitations}">
+    <div class="max-w-3xl text-base/7">
+        <ul class="list-none">
+            <f:for each="{habilitations}" as="habilitation">
+                <li>
+                    {habilitation.title}
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:if>
+
+</html>

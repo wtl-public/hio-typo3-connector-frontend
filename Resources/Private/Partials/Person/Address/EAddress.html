@@ -1,0 +1,30 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+    <f:switch expression="{contact.eAddressTypeId}">
+        <f:case value="5">
+            <!-- phone -->
+            <dt class="sr-only">Telefonnummer</dt>
+            <dd>
+                Tel.: {contact.eAddress}
+            </dd>
+        </f:case>
+        <f:case value="6">
+            <!-- fax -->
+            <dt class="sr-only">Faxnummer</dt>
+            <dd>
+                Fax: {contact.eAddress}
+            </dd>
+        </f:case>
+        <f:case value="10">
+            <!-- email -->
+            <dt class="sr-only">Telefonnummer</dt>
+            <dd>
+                E-Mail: <a href="mailto:{contact.eAddress}" class="text-wtl-red-dark hover:underline">{contact.eAddress}</a>
+            </dd>
+        </f:case>
+        <f:defaultCase>
+        </f:defaultCase>
+    </f:switch>
+</html>

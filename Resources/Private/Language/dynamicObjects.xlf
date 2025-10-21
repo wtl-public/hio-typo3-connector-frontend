@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:hio_typo3_connector_wtl/Resources/Private/Language/Modules/dynamicObjects.xlf" date="2024-10-17T00:00:00Z" product-name="hio_typo3_connector_wtl">
+        <header/>
+        <body>
+
+            <trans-unit id="fs.res.publication.Accounting.articleNumber" resname="fs.res.publication.Accounting.articleNumber">
+                <source>Article number</source>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.completionDate" resname="fs.res.publication.Accounting.completionDate">
+                <source>Completion date</source>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.dataPrivacyProtection" resname="fs.res.publication.Accounting.dataPrivacyProtection">
+                <source>Data privacy protection</source>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.identificationNumber" resname="fs.res.publication.Accounting.identificationNumber">
+                <source>Identification number</source>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.numberOfDownloads" resname="fs.res.publication.Accounting.numberOfDownloads">
+                <source>Number of downloads</source>
+            </trans-unit>
+
+            <trans-unit id="fs.res.project.Accounting.accountStatementUpdates" resname="fs.res.project.Accounting.accountStatementUpdates">
+                <source>Account statement updates</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.accountingRecordSource" resname="fs.res.project.Accounting.accountingRecordSource">
+                <source>Accounting record source</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.archiveNumber" resname="fs.res.project.Accounting.archiveNumber">
+                <source>Archive number</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.bookingDeadline" resname="fs.res.project.Accounting.bookingDeadline">
+                <source>Booking deadline</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.bookingWeekDay" resname="fs.res.project.Accounting.bookingWeekDay">
+                <source>Booking week day</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.isVATincluded" resname="fs.res.project.Accounting.isVATincluded">
+                <source>Is VAT included</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.maxHours" resname="fs.res.project.Accounting.maxHours">
+                <source>Maximum hours</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.numberOfProjectMembers" resname="fs.res.project.Accounting.numberOfProjectMembers">
+                <source>Number of project members</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.BasicData.finishDate" resname="fs.res.project.BasicData.finishDate">
+                <source>Finish date</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Planning.bookingState" resname="fs.res.project.Planning.bookingState">
+                <source>Booking state</source>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Planning.numberOfMembers" resname="fs.res.project.Planning.numberOfMembers">
+                <source>Number of members</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

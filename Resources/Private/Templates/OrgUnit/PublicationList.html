@@ -1,0 +1,41 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:if condition="{publications}">
+        <div class="mx-auto w-full grow flex flex-col md:flex-row gap-4 mb-4">
+
+            <div class="bg-white grow flex-1 lg:flex rounded">
+                <div class="px-4 py-6 sm:px-6 lg:pl-8 md:flex-1 xl:pl-6">
+                    <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 h-0 sm:h-auto collapse sm:visible">
+                        <f:translate key="hio.show.orgUnit.publications" extensionName="HioTypo3ConnectorWtl" />
+                    </h2>
+                    <f:if condition="{settings.groupBy}  == none">
+                        <f:then>
+                            <f:render partial="SelectedOrgUnit/PublicationList" arguments="{publications: publications, selectedCitationStyle: settings.citationStyle}"/>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{groupedPublications}">
+                                <f:render partial="SelectedOrgUnit/GroupedPublicationList"
+                                          arguments="{publications: groupedPublications, selectedCitationStyle: settings.citationStyle}"/>
+                            </f:if>
+                            <f:if condition="{ungroupedPublications}">
+                                <h3 class="text-2xl xl:text-3xl font-semibold text-left">
+                                    <f:translate key="hio.show.orgUnit.ungroupedPublications" extensionName="HioTypo3Connector" />
+                                </h3>
+                                <f:render partial="SelectedOrgUnit/PublicationList"
+                                          arguments="{publications: ungroupedPublications, selectedCitationStyle: settings.citationStyle}"/>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </div>
+            </div>
+
+        </div>
+    </f:if>
+</f:section>
+
+</html>

@@ -1,0 +1,43 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{doctoralProgram.details}">
+    <li class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
+        <div>
+            <p class="text-sm font-semibold leading-6 text-gray-700 flex flex-1 items-center py-0">
+                <f:for each="{doctoralProgram.details.researchAreas}" as="researchArea" key="index">
+                    <span>
+                        <f:if condition="{index} > 0">
+                            <f:then>, {researchArea.name}</f:then>
+                            <f:else>{researchArea.name}</f:else>
+                        </f:if>
+                    </span>
+                </f:for>
+            </p>
+            <p class="text-lg font-semibold leading-6 text-gray-900 py-0">
+                <f:link.action
+                        action="show"
+                        addQueryString="untrusted"
+                        arguments="{doctoralProgram: doctoralProgram.uid, currentPageNumber: currentPageNumber, filter:filter}"
+                        class="hover:underline"
+                >
+                    {doctoralProgram.title}
+                </f:link.action>
+            </p>
+            <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
+                <p class="py-0">
+                    <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:doctoralProgram.courseOfStudy" />: {doctoralProgram.details.courseOfStudy}
+                </p>
+                <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
+                    <circle cx="1" cy="1" r="1" />
+                </svg>
+                <p class="py-0">
+                    <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:doctoralProgram.language" />: {doctoralProgram.details.language}
+                </p>
+            </div>
+        </div>
+    </li>
+</f:if>
+
+</html>

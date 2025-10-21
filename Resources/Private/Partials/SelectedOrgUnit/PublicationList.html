@@ -1,0 +1,17 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{publications}">
+    <div class="max-w-3xl xl:max-w-5xl text-base/7">
+        <ul class="list-none">
+            <f:for each="{publications}" as="publication">
+                <li class="py-1">
+                    <f:render partial="SelectedOrgUnit/Publication/Item" arguments="{publication: publication, settings: settings}"/>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:if>
+
+</html>

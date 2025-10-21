@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector_wtl/Resources/Private/Language/locallang.xlf" date="2025-07-31T00:00:00Z" product-name="hio_typo3_connector_wtl">
+        <header/>
+        <body>
+            <trans-unit id="filter.button.apply" resname="filter.button.apply">
+                <source>Apply filter</source>
+                <target>Filter anwenden</target>
+            </trans-unit>
+            <trans-unit id="filter.button.reset" resname="filter.button.reset">
+                <source>Reset filter</source>
+                <target>Zurücksetzen</target>
+            </trans-unit>
+
+            <trans-unit id="publication.index.title" resname="publication.index.title">
+                <source>Publications</source>
+                <target>Publikationen</target>
+            </trans-unit>
+            <trans-unit id="publication.show.title" resname="publication.show.title">
+                <source>Publication details</source>
+                <target>Publikationsdetails</target>
+            </trans-unit>
+            <trans-unit id="filter.publication.searchTerm.label" resname="filter.publication.searchTerm.label">
+                <source>Search for publications</source>
+                <target>Nach Publikationen suchen</target>
+            </trans-unit>
+            <trans-unit id="filter.publication.releaseYear.label" resname="filter.publication.releaseYear.label">
+                <source>Release year</source>
+                <target>Veröffentlichungsjahr</target>
+            </trans-unit>
+            <trans-unit id="filter.publication.releaseYear.from" resname="filter.publication.releaseYear.from">
+                <source>from</source>
+                <target>von</target>
+            </trans-unit>
+            <trans-unit id="filter.publication.releaseYear.to" resname="filter.publication.releaseYear.to">
+                <source>to</source>
+                <target>bis</target>
+            </trans-unit>
+            <trans-unit id="filter.publication.type.label" resname="filter.publication.type.label">
+                <source>Publication type</source>
+                <target>Publikationstyp</target>
+            </trans-unit>
+
+            <trans-unit id="project.index.title" resname="project.index.title">
+                <source>Projects</source>
+                <target>Projekte</target>
+            </trans-unit>
+            <trans-unit id="project.show.title" resname="project.show.title">
+                <source>Project details</source>
+                <target>Projektdetails</target>
+            </trans-unit>
+            <trans-unit id="filter.project.searchTerm.label" resname="filter.project.searchTerm.label">
+                <source>Search for projects</source>
+                <target>Nach Projekten suchen</target>
+            </trans-unit>
+            <trans-unit id="filter.project.startDate.label" resname="filter.project.startDate.label">
+                <source>Start date</source>
+                <target>Startdatum</target>
+            </trans-unit>
+            <trans-unit id="filter.project.startDate.from" resname="filter.project.startDate.from">
+                <source>from</source>
+                <target>von</target>
+            </trans-unit>
+            <trans-unit id="filter.project.startDate.to" resname="filter.project.startDate.to">
+                <source>to</source>
+                <target>bis</target>
+            </trans-unit>
+            <trans-unit id="filter.project.endDate.label" resname="filter.project.endDate.label">
+                <source>End date</source>
+                <target>Enddatum</target>
+            </trans-unit>
+            <trans-unit id="filter.project.endDate.from" resname="filter.project.endDate.from">
+                <source>from</source>
+                <target>von</target>
+            </trans-unit>
+            <trans-unit id="filter.project.endDate.to" resname="filter.project.endDate.to">
+                <source>to</source>
+                <target>bis</target>
+            </trans-unit>
+            <trans-unit id="filter.project.status.label" resname="filter.project.status.label">
+                <source>Project status</source>
+                <target>Projektstatus</target>
+            </trans-unit>
+            <trans-unit id="filter.project.type.label" resname="filter.project.type.label">
+                <source>Project type</source>
+                <target>Projekttyp</target>
+            </trans-unit>
+
+            <trans-unit id="person.index.title" resname="person.index.title">
+                <source>Persons</source>
+                <target>Personen</target>
+            </trans-unit>
+            <trans-unit id="person.show.title" resname="person.show.title">
+                <source>Person profile</source>
+                <target>Personenprofil</target>
+            </trans-unit>
+            <trans-unit id="filter.person.searchTerm.label" resname="filter.person.searchTerm.label">
+                <source>Search for persons</source>
+                <target>Nach Personen suchen</target>
+            </trans-unit>
+
+            <trans-unit id="patent.index.title" resname="patent.index.title">
+                <source>Patents</source>
+                <target>Patente</target>
+            </trans-unit>
+            <trans-unit id="patent.show.title" resname="patent.show.title">
+                <source>Patent information</source>
+                <target>Patentinformationen</target>
+            </trans-unit>
+            <trans-unit id="filter.patent.searchTerm.label" resname="filter.patent.searchTerm.label">
+                <source>Search for patents</source>
+                <target>Nach Patenten suchen</target>
+            </trans-unit>
+
+            <trans-unit id="doctoralProgram.index.title" resname="doctoralProgram.index.title">
+                <source>Doctoral programs</source>
+                <target>Promotionen</target>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.show.title" resname="doctoralProgram.show.title">
+                <source>Doctoral program details</source>
+                <target>Details zur Promotion</target>
+            </trans-unit>
+            <trans-unit id="filter.doctoralProgram.searchTerm.label" resname="filter.doctoralProgram.searchTerm.label">
+                <source>Search for doctoral programs</source>
+                <target>Nach Promotionen suchen</target>
+            </trans-unit>
+
+            <trans-unit id="habilitation.index.title" resname="habilitation.index.title">
+                <source>Habilitations</source>
+                <target>Habilitationen</target>
+            </trans-unit>
+            <trans-unit id="habilitation.show.title" resname="habilitation.show.title">
+                <source>Habilitation details</source>
+                <target>Habilitationsdetails</target>
+            </trans-unit>
+            <trans-unit id="filter.habilitation.searchTerm.label" resname="filter.habilitation.searchTerm.label">
+                <source>Search for habilitations</source>
+                <target>Nach Habilitationen suchen</target>
+            </trans-unit>
+
+            <trans-unit id="orgUnit.index.title" resname="orgUnit.index.title">
+                <source>Organization units</source>
+                <target>Organisationseinheiten</target>
+            </trans-unit>
+            <trans-unit id="orgUnit.show.title" resname="orgUnit.show.title">
+                <source>Organization unit details</source>
+                <target>Details zur Organisationseinheit</target>
+            </trans-unit>
+            <trans-unit id="filter.orgUnit.searchTerm.label" resname="filter.orgUnit.searchTerm.label">
+                <source>Search for organization units</source>
+                <target>Nach Organisationseinheiten suchen</target>
+            </trans-unit>
+
+            <trans-unit id="nomination.index.title" resname="nomination.index.title">
+                <source>Nominations</source>
+                <target>Preisanerkennungen</target>
+            </trans-unit>
+            <trans-unit id="nomination.show.title" resname="nomination.show.title">
+                <source>Nomination details</source>
+                <target>Details zur Preisanerkennung</target>
+            </trans-unit>
+            <trans-unit id="filter.nomination.searchTerm.label" resname="filter.nomination.searchTerm.label">
+                <source>Search for nominations</source>
+                <target>Nach Preisanerkennungen suchen</target>
+            </trans-unit>
+
+            <trans-unit id="spinOff.index.title" resname="spinOff.index.title">
+                <source>Spin-offs</source>
+                <target>Ausgründungen</target>
+            </trans-unit>
+            <trans-unit id="spinOff.show.title" resname="spinOff.show.title">
+                <source>Spin-off details</source>
+                <target>Details zur Ausgründung</target>
+            </trans-unit>
+            <trans-unit id="filter.spinOff.searchTerm.label" resname="filter.spinOff.searchTerm.label">
+                <source>Search for spin offs</source>
+                <target>Nach Ausgründungen suchen</target>
+            </trans-unit>
+
+            <trans-unit id="researchInfrastructure.index.title" resname="researchInfrastructure.index.title">
+                <source>Research infrastructures</source>
+                <target>Forschungseinrichtungen</target>
+            </trans-unit>
+            <trans-unit id="researchInfrastructure.show.title" resname="researchInfrastructure.show.title">
+                <source>Research infrastructure details</source>
+                <target>Details zur Forschungseinrichtung</target>
+            </trans-unit>
+            <trans-unit id="filter.researchInfrastructure.searchTerm.label" resname="filter.researchInfrastructure.searchTerm.label">
+                <source>Search for research infrastructures</source>
+                <target>Nach Forschungseinrichtungen suchen</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.person.profilePage" resname="hio.show.person.profilePage">
+                <source>Profile page</source>
+                <target>Profilseite</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.person.publications" resname="hio.show.person.publications">
+                <source>Publications</source>
+                <target>Publikationen</target>
+            </trans-unit>
+            <trans-unit id="hio.show.person.publicationTypeStats" resname="hio.show.person.publicationTypeStats">
+                <source>Publication type</source>
+                <target>Publikationstyp</target>
+            </trans-unit>
+            <trans-unit id="hio.show.person.coauthors" resname="hio.show.person.coauthors">
+                <source>Coauthor(s)</source>
+                <target>Mitautor*innen</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.person.projects" resname="hio.show.person.projects">
+                <source>Projects</source>
+                <target>Projekte</target>
+            </trans-unit>
+            <trans-unit id="hio.show.person.projectStatusStats" resname="hio.show.person.projectStatusStats">
+                <source>Project status</source>
+                <target>Projektstatus</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.person.patents" resname="hio.show.person.patents">
+                <source>Patents</source>
+                <target>Patente</target>
+            </trans-unit>
+            <trans-unit id="hio.show.person.dynamicObjects" resname="hio.show.person.dynamicObjects">
+                <source>Additional information</source>
+                <target>Zusätzliche Informationen</target>
+            </trans-unit>
+
+            <trans-unit id="hio.tt_content.type.featuredPublication.releaseYear" resname="hio.tt_content.type.featuredPublication.releaseYear">
+                <source>Release year</source>
+                <target>Veröffentlichungsjahr</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.type.featuredPublication.type" resname="hio.tt_content.type.featuredPublication.type">
+                <source>Type</source>
+                <target>Publikationstyp</target>
+            </trans-unit>
+
+
+            <trans-unit id="hio.show.orgUnit.publications" resname="hio.show.orgUnit.publications">
+                <source>Publications</source>
+                <target>Publikationen</target>
+            </trans-unit>
+            <trans-unit id="hio.show.orgUnit.projects" resname="hio.show.orgUnit.projects">
+                <source>Projects</source>
+                <target>Projekte</target>
+            </trans-unit>
+
+
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,40 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{orgUnit}">
+    <div class="mx-auto max-w-2xl  lg:mx-0 lg:max-w-none dark:divide-white/10">
+        <div class="grid gap-6 lg:grid-cols-3 mb-2">
+            <div></div>
+            <f:if condition="{orgUnit.details.address}">
+
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-6 mb-6">
+                    <div class="rounded-2xl bg-gray-50 p-6 dark:bg-gray-800/50">
+                        <h3 class="text-base/7 font-semibold text-gray-900">Postanschrift</h3>
+                        <dl class="mt-3 space-y-1 text-sm text-gray-600">
+                            <div>
+                                <dt class="sr-only">Adresse</dt>
+                                <dd>
+                                    {orgUnit.details.address.street} <br>
+                                    {orgUnit.details.address.postcode} {orgUnit.details.address.city}
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="rounded-2xl bg-gray-50 p-6">
+                        <h3 class="text-base/7 font-semibold text-gray-900">Kontakt</h3>
+                        <dl class="mt-3 space-y-1 text-sm text-gray-600">
+                            <f:for each="{orgUnit.details.contactData}" as="contact">
+                                <div>
+                                    <f:render partial="Person/Address/EAddress" arguments="{contact: contact}"/>
+                                </div>
+                            </f:for>
+                        </dl>
+                    </div>
+                </div>
+            </f:if>
+        </div>
+    </div>
+</f:if>
+
+</html>

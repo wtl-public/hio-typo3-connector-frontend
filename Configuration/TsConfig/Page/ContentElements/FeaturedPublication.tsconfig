@@ -1,0 +1,12 @@
+mod.wizards.newContentElement.wizardItems {
+    elements {
+        FeaturedPublication {
+            iconIdentifier = tx-hio_typo3_connector_wtl-featured-publications
+            title = FeaturedPublication
+            description = ...
+            tt_content_defValues {
+                CType = tx_hiotypo3connectorwtl_featured_publication
+            }
+        }
+    }
+}

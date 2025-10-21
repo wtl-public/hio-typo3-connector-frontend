@@ -1,0 +1,25 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{publications}">
+    <f:then>
+        <div class="overflow-hidden">
+            <ul role="list" class="divide-y divide-gray-100">
+            <f:for each="{publications}" as="publication">
+                <f:render
+                    partial="OrgUnit/Show/Tabs/PublicationListItem"
+                    arguments="{publication: publication}" />
+            </f:for>
+            </ul>
+        </div>
+    </f:then>
+
+    <f:else>
+        <div class="no-comment alert alert-info">
+            <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:noPublications"/>
+        </div>
+    </f:else>
+</f:if>
+
+</html>

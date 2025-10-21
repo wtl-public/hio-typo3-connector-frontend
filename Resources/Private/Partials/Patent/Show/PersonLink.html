@@ -1,0 +1,20 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{person}">
+    <f:if condition="{person.id} && {settings.patents.personTargetPageUid}">
+        <f:then>
+            <f:link.action action="show"
+                           pageUid="{settings.patents.personTargetPageUid}"
+                           controller="Person"
+                           arguments="{person: person.id}"
+                           class="text-gray-700 hover:underline hover:text-wtl-red-500 px-0">{person.name}</f:link.action><br />
+        </f:then>
+        <f:else>
+            {person.name}<br />
+        </f:else>
+    </f:if>
+</f:if>
+
+</html>

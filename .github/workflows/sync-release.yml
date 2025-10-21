@@ -1,0 +1,65 @@
+name: 'Publish to Release Repository'
+
+on:
+  release:
+    types: [created] # Löst die Action nur aus, wenn ein neues Release erstellt wird
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'webteam-leipzig/hio-typo3-connector-wtl' }} # Stellt sicher, dass die Action nur im Haupt-Repository ausgeführt wird
+    steps:
+      - name: 'Checkout Development Repo'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: 'Checkout Release Repo'
+        uses: actions/checkout@v4
+        with:
+          repository: 'wtl-public/hio-typo3-connector-wtl'
+          token: ${{ secrets.RELEASE_REPO_TOKEN }}
+          ref: main
+          path: hio-release-repo
+          fetch-depth: 0
+
+      - name: 'Synchronize files'
+        run: |
+          # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
+          find hio-release-repo -mindepth 1 ! -name '.git' ! -path 'hio-release-repo/.git/*' -exec rm -rf {} +
+          # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
+          rsync -av --progress . hio-release-repo/ --exclude .git --exclude hio-release-repo
+
+      - name: 'Configure Git and Push to Release Repo'
+        env:
+          RELEASE_REPO_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
+        run: |
+          # Wechsle in das Verzeichnis des Release-Repositories
+          cd hio-release-repo
+                    
+          # Konfiguriere Git mit dem Benutzer des Tokens (optional, aber gute Praxis)
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          
+          git config --unset-all http.https://github.com/.extraheader
+          git add .
+          
+          # Commit nur, wenn es Änderungen gibt
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
+            git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector-wtl.git main
+          else
+            echo "Keine Änderungen zum Committen."
+          fi
+
+      - name: 'Create Release in Release Repo'
+        uses: softprops/action-gh-release@v2
+        with:
+          repository: 'wtl-public/hio-typo3-connector-wtl'
+          token: ${{ secrets.RELEASE_REPO_TOKEN }}
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.event.release.name }}
+          body: ${{ github.event.release.body }}
+          prerelease: ${{ github.event.release.prerelease }}
+          draft: false

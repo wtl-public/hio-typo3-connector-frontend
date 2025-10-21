@@ -1,0 +1,12 @@
+mod.wizards.newContentElement.wizardItems {
+    elements {
+        FeaturedProject {
+            iconIdentifier = tx-hio_typo3_connector_wtl-featured-projects
+            title = FeaturedProject
+            description = ...
+            tt_content_defValues {
+                CType = tx_hiotypo3connectorwtl_featured_project
+            }
+        }
+    }
+}

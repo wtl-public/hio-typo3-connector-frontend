@@ -1,0 +1,173 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:flashMessages/>
+    <div class="flex items-stretch justify-between py-4 px-0">
+        <h1 class="mt-2 font-normal text-3xl sm:text-4xl px-4">
+            <f:translate key="orgUnit.show.title" extensionName="HioTypo3ConnectorWtl"/>
+        </h1>
+    </div>
+
+    <f:if condition="{orgUnit.details}">
+
+        <f:variable name="childCount" value="{orgUnit.details.children -> f:count()}" />
+        <f:variable name="personCount" value="{orgUnit.details.persons -> f:count()}" />
+        <f:variable name="projectCount" value="{orgUnit.projects -> f:count()}" />
+        <f:variable name="publicationCount" value="{orgUnit.publications -> f:count()}" />
+
+        <div class="bg-white px-4 py-6 lg:p-8">
+            <div class="text-base/7 text-gray-700">
+                <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                    {orgUnit.title}</h1>
+            </div>
+
+            <f:render partial="OrgUnit/Address" arguments="{orgUnit: orgUnit}" />
+
+            <div class="mx-auto mt-4">
+                <div class="max-sm:grid grid-cols-1 sm:hidden">
+                    <select aria-label="Select a tab" id="tabs-mobile" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red-dark">
+                        <option selected value="orgUnitChildren">
+                            Organisationseinheiten
+                            <f:if condition="{childCount} > 0">
+                                ({childCount})
+                            </f:if>
+                        </option>
+                        <option value="orgUnitPersons">
+                            Personen
+                            <f:if condition="{personCount} > 0">
+                                ({personCount})
+                            </f:if>
+                        </option>
+                        <option value="orgUnitProjects">
+                            Projekte
+                            <f:if condition="{projectCount} > 0">
+                                ({projectCount})
+                            </f:if>
+                        </option>
+                        <option value="orgUnitPublications">
+                            Publikationen
+                            <f:if condition="{publicationCount} > 0">
+                                ({publicationCount})
+                            </f:if>
+                        </option>
+                    </select>
+                    <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end fill-gray-500 dark:fill-gray-400">
+                        <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                    </svg>
+                </div>
+
+                <div class="max-sm:hidden sm:block">
+                    <div class="border-b border-gray-200 dark:border-white/10">
+                        <nav aria-label="Tabs" id="tabs" class="-mb-px flex space-x-8">
+                            <a href="#orgUnitChildren" aria-current="page" class="flex whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium border-wtl-red text-wtl-red hover:text-wtl-red-dark hover:border-wtl-red">
+                                Organisationseinheiten
+                                <f:render partial="Element/Badge" arguments="{label: childCount}" />
+                            </a>
+                            <a href="#orgUnitPersons" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-600 hover:text-gray-700 hover:border-gray-300">
+                                Personen
+                                <f:render partial="Element/Badge" arguments="{label: personCount}" />
+                            </a>
+                            <a href="#orgUnitProjects" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-600 hover:text-gray-700 hover:border-gray-300">
+                                Projekte
+                                <f:render partial="Element/Badge" arguments="{label: projectCount}" />
+                            </a>
+                            <a href="#orgUnitPublications" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-600 hover:text-gray-700 hover:border-gray-300">
+                                Publikationen
+                                <f:render partial="Element/Badge" arguments="{label: publicationCount}" />
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Tab Contents -->
+                <div id="tab-contents">
+                    <div id="orgUnitChildren" class="py-4">
+                        <f:render partial="OrgUnit/Show/Tabs/OrgUnitList" arguments="{children: orgUnit.details.children}"/>
+                    </div>
+                    <div id="orgUnitPersons" class="hidden py-4">
+                        <f:render partial="OrgUnit/Show/Tabs/PersonList" arguments="{persons: orgUnit.details.persons}"/>
+                    </div>
+                    <div id="orgUnitProjects" class="hidden py-4">
+                        <f:render partial="OrgUnit/Show/Tabs/ProjectList" arguments="{projects: orgUnit.projects}"/>
+                    </div>
+                    <div id="orgUnitPublications" class="hidden py-4">
+                        <f:render partial="OrgUnit/Show/Tabs/PublicationList" arguments="{publications: orgUnit.publications}"/>
+                    </div>
+                </div>
+            </div>
+
+            <f:asset.script identifier="orgunit-tab-toggler" position="footer" inline="true">
+                let tabsContainer = document.querySelector("#tabs");
+                let tabTogglers = tabsContainer.querySelectorAll("#tabs a");
+
+                tabTogglers.forEach(function (toggler) {
+                    toggler.addEventListener("click", function (e) {
+                        e.preventDefault();
+
+                        let tabName = this.getAttribute("href");
+                        let tabContents = document.querySelector("#tab-contents");
+
+                        for (let i = 0; i < tabContents.children.length; i++) {
+
+                            tabTogglers[i].classList.remove("border-b-2", "-mb-px", "bg-white", "border-wtl-red", "text-wtl-red", "hover:text-wtl-red-dark", "hover:border-wtl-red");
+                            tabTogglers[i].classList.add("text-gray-600", "hover:text-gray-700", "hover:border-b-2", "hover:border-gray-300");
+                            tabContents.children[i].classList.remove("hidden");
+                            if ("#" + tabContents.children[i].id === tabName) {
+                                continue;
+                            }
+                            tabContents.children[i].classList.add("hidden");
+                        }
+                        e.target.classList.add("border-b-2", "-mb-px", "bg-white", "border-wtl-red", "text-wtl-red", "hover:text-wtl-red-dark", "hover:border-wtl-red");
+                    });
+                });
+
+                let tabsMobileContainer = document.querySelector("#tabs-mobile");
+                let tabOptions = tabsMobileContainer.querySelectorAll("#tabs-mobile option");
+                tabsMobileContainer.addEventListener("change", function (e) {
+                    e.preventDefault();
+
+                    let tabName = this.value;
+                    let tabContents = document.querySelector("#tab-contents");
+
+                    tabOptions.forEach(option => option.removeAttribute("selected"));
+                    for (let i = 0; i < tabContents.children.length; i++) {
+                        tabContents.children[i].classList.remove("hidden");
+                        if (tabContents.children[i].id === tabName) {
+                            continue;
+                        }
+                        tabContents.children[i].classList.add("hidden");
+                    }
+                    e.target.setAttribute("selected", "selected");
+                });
+            </f:asset.script>
+
+        </div>
+    </f:if>
+    <div class="px-4 py-5 sm:p-6">
+        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+            <div class="-mt-px flex w-0 flex-1">
+                <f:link.action
+                        action="index"
+                        addQueryString="untrusted"
+                        arguments="{currentPageNumber:currentPageNumber, filter:filter}"
+                        class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                         data-slot="icon">
+                        <path fill-rule="evenodd"
+                              d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                    <f:translate key="ShowBackToList" extensionName="HioTypo3Connector"/>
+                </f:link.action>
+            </div>
+        </nav>
+    </div>
+
+</f:section>
+
+</html>

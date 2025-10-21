@@ -1,0 +1,56 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<div class="mx-auto max-w-2xl  lg:mx-0 lg:max-w-none dark:divide-white/10">
+    <f:for each="{person.orgUnits}" as="orgUnit">
+        <div class="grid gap-6 lg:grid-cols-3 mb-2">
+            <div>
+                <h3 class="font-medium text-xl sm:text-2xl text-gray-900">
+                    {orgUnit.title}
+                </h3>
+                <f:if condition="{person.details.orgUnits}">
+                <f:for each="{person.details.orgUnits}" as="personOrgUnit">
+                    <f:if condition="{personOrgUnit.id} == {orgUnit.objectId}">
+                        <p class="font-semibold text-base text-gray-600">
+                            <span class="font-normal">Funktion:</span>
+                            <f:for each="{personOrgUnit.affiliations}" as="affiliation" iteration="affiliationIterator">
+                                <f:if condition="{affiliationIterator.index} > 0"><f:then><span>,&nbsp;</span></f:then></f:if>
+                                {affiliation.affiliationType.name}
+                            </f:for>
+                        </p>
+                    </f:if>
+                </f:for>
+                </f:if>
+            </div>
+            <f:if condition="{orgUnit.details.postAddress}">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-6 mb-6">
+                    <div class="rounded-2xl bg-gray-50 p-6 dark:bg-gray-800/50">
+                        <h3 class="text-base/7 font-semibold text-gray-900">Postanschrift</h3>
+                        <dl class="mt-3 space-y-1 text-sm text-gray-600">
+                            <div>
+                                <dt class="sr-only">Adresse</dt>
+                                <dd>
+                                    {orgUnit.details.postAddress.street} <br>
+                                    {orgUnit.details.postAddress.postcode} {orgUnit.details.postAddress.city}
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="rounded-2xl bg-gray-50 p-6">
+                        <h3 class="text-base/7 font-semibold text-gray-900">Kontakt</h3>
+                        <dl class="mt-3 space-y-1 text-sm text-gray-600">
+                            <f:for each="{orgUnit.details.contactData}" as="contact">
+                                <div>
+                                    <f:render partial="Person/Address/EAddress" arguments="{contact: contact}"/>
+                                </div>
+                            </f:for>
+                        </dl>
+                    </div>
+                </div>
+            </f:if>
+        </div>
+    </f:for>
+</div>
+
+</html>

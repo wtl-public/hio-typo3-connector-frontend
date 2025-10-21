@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:flashMessages/>
+
+    <div class="mt-6 mb-12 space-y-6">
+        <f:if condition="{publications -> f:count()} > 0">
+            <f:for each="{publications}" as="publication" key="index">
+                <f:variable name="publicationImage" value="EXT:hio_typo3_connector_wtl/Resources/Public/Images/publications/{index % 7}.jpg"/>
+                <f:render partial="Publication/Highlights/Item" arguments="{publication: publication, publicationImage: publicationImage}"/>
+            </f:for>
+        </f:if>
+    </div>
+</f:section>
+
+</html>

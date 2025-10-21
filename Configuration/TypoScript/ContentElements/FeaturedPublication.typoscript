@@ -1,0 +1,20 @@
+tt_content.tx_hiotypo3connectorwtl_featured_publication =< lib.contentElement
+tt_content.tx_hiotypo3connectorwtl_featured_publication {
+    templateName = FeaturedPublication
+    templateRootPaths.0 = EXT:hio_typo3_connector_wtl/Resources/Private/Templates/ContentElements/
+    partialRootPaths.0 = EXT:hio_typo3_connector_wtl/Resources/Private/Partials/ContentElements/
+    layoutRootPaths.0 = EXT:hio_typo3_connector/Resources/Private/Layouts/
+    dataProcessing {
+        10 = files
+        10 {
+            as = image
+            references.fieldName = image
+        }
+        20 = featured-publication
+        20 {
+          fieldName = tx_hiotypo3connectorwtl_featured_publication
+          as = featuredPublication
+        }
+    }
+    settings < plugin.tx_hiotypo3connectorwtl.settings
+}

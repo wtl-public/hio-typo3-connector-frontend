@@ -1,0 +1,39 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="group relative bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 mb-12">
+        <div class="relative overflow-hidden h-80">
+            <f:media file="{image.0}" alt="{featuredProject.title}" crop="default" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+
+                <f:link.action
+                        pageUid="{settings.featuredProjects.projectTargetPageUid}"
+                        controller="Project"
+                        action="show"
+                        addQueryString="untrusted"
+                        arguments="{project: featuredProject.uid}"
+                        class="w-full bg-wtl-red text-white py-2 rounded-lg font-semibold hover:bg-wtl-red-dark transition-colors duration-300 flex items-center justify-center gap-2"
+                        extensionName="HioTypo3Connector"
+                        pluginName="ProjectList"
+                        argumentsToBeExcludedFromQueryString="{test: 'project'}"
+                >
+                    Details ansehen
+                </f:link.action>
+
+            </div>
+        </div>
+        <div class="p-5 h-[10rem]">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800">{featuredProject.title}</h3>
+                    <p class="text-gray-500 text-sm">{featuredProject.type}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

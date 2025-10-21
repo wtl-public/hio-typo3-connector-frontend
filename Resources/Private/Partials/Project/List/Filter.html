@@ -1,0 +1,117 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<div class="flex items-end justify-end py-4 px-0">
+    <div class="w-full">
+        <f:form action="{action}" controller="{controller}" object="{filter}" name="filter">
+            <div class="flex flex-col mb-4">
+                <label for="searchTerm" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                    <f:translate key="filter.project.searchTerm.label" extensionName="HioTypo3ConnectorWtl"/>
+                </label>
+                <div class="mt-2">
+                    <f:form.textfield
+                            id="searchTerm"
+                            name="searchTerm"
+                            placeholder="{f:translate(key: 'search.placeholder')}"
+                            property="searchTerm"
+                            class="col-start-1 row-start-1 block w-full bg-white py-1.5 pl-10 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:pl-9 sm:text-sm/6"/>
+                </div>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <label for="type" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                    <f:translate key="filter.project.type.label" extensionName="HioTypo3ConnectorWtl"/>
+                </label>
+                <div class="mt-2">
+                    <f:form.select
+                            id="type"
+                            name="type"
+                            property="type"
+                            options="{typeOptions}"
+                            optionLabelField="label"
+                            optionValueField="value"
+                            class="col-start-1 row-start-1 block w-full bg-white py-1.5 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:text-sm/6"
+                    />
+                </div>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <label for="status" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                    <f:translate key="filter.project.status.label" extensionName="HioTypo3ConnectorWtl"/>
+                </label>
+                <div class="mt-2">
+                    <f:form.select
+                            id="status"
+                            name="status"
+                            property="status"
+                            options="{statusOptions}"
+                            optionLabelField="label"
+                            optionValueField="value"
+                            class="col-start-1 row-start-1 block w-full bg-white py-1.5 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:text-sm/6"
+                    />
+                </div>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <fieldset>
+                    <legend class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                        <f:translate key="filter.project.startDate.label" extensionName="HioTypo3ConnectorWtl"/>
+                    </legend>
+                    <div class="mt-2 grid grid-cols-2">
+                        <div class="-mr-px -mt-px">
+                            <f:form.textfield
+                                    id="startDateFrom"
+                                    name="startDateFrom"
+                                    type="date"
+                                    placeholder="{f:translate(key: 'filter.project.startDate.from', extensionName: 'HioTypo3ConnectorWtl')}"
+                                    property="startDateFrom"
+                                    class="col-start-1 row-start-1 block w-full bg-white py-1.5 pl-10 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:pl-9 sm:text-sm/6"/>
+                        </div>
+                        <div class="-mt-px">
+                            <f:form.textfield
+                                    id="startDateTo"
+                                    name="startDateTo"
+                                    type="date"
+                                    placeholder="{f:translate(key: 'filter.project.startDate.to', extensionName: 'HioTypo3ConnectorWtl')}"
+                                    property="startDateTo"
+                                    class="col-start-1 row-start-1 block w-full bg-white py-1.5 pl-10 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:pl-9 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <fieldset>
+                    <legend class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                        <f:translate key="filter.project.endDate.label" extensionName="HioTypo3ConnectorWtl"/>
+                    </legend>
+                    <div class="mt-2 grid grid-cols-2">
+                        <div class="-mr-px -mt-px">
+                            <f:form.textfield
+                                    id="endDateFrom"
+                                    name="endDateFrom"
+                                    type="date"
+                                    placeholder="{f:translate(key: 'filter.project.endDate.from', extensionName: 'HioTypo3ConnectorWtl')}"
+                                    property="endDateFrom"
+                                    class="col-start-1 row-start-1 block w-full bg-white py-1.5 pl-10 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:pl-9 sm:text-sm/6"/>
+                        </div>
+                        <div class="-mt-px">
+                            <f:form.textfield
+                                    id="endDateTo"
+                                    name="endDateTo"
+                                    type="date"
+                                    placeholder="{f:translate(key: 'filter.project.endDate.to', extensionName: 'HioTypo3ConnectorWtl')}"
+                                    property="endDateTo"
+                                    class="col-start-1 row-start-1 block w-full bg-white py-1.5 pl-10 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-wtl-red sm:pl-9 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <f:render partial="Filter/Buttons" />
+        </f:form>
+    </div>
+</div>
+
+</html>

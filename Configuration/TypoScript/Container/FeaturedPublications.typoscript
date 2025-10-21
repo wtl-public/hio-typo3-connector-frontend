@@ -1,0 +1,14 @@
+tt_content.tx_hiotypo3connectorwtl_featured_publications =< lib.contentElement
+tt_content.tx_hiotypo3connectorwtl_featured_publications {
+    templateName = FeaturedPublications
+    templateRootPaths.0 = EXT:hio_typo3_connector_wtl/Resources/Private/Templates/ContentElements/
+    partialRootPaths.0 = EXT:hio_typo3_connector_wtl/Resources/Private/Partials/ContentElements/
+
+    layoutRootPaths.0 = EXT:fluid_styled_content/Resources/Private/Layouts/
+    partialRootPaths.1759131832 = EXT:fluid_styled_content/Resources/Private/Partials/
+
+    dataProcessing {
+        110 = B13\Container\DataProcessing\ContainerProcessor
+    }
+    settings < plugin.tx_hiotypo3connectorwtl.settings
+}

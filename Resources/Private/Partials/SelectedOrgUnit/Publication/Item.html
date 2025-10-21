@@ -1,0 +1,62 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{publication}">
+    <f:if condition="{publication.details.citations} && {settings.citationStyle}">
+        <f:then>
+            <f:if condition="{publication.uid} && {settings.orgUnits.publicationTargetPageUid}">
+                <f:then>
+                    <f:link.action
+                            action="show"
+                            controller="Publication"
+                            pageUid="{settings.orgUnits.publicationTargetPageUid}"
+                            arguments="{publication: publication.uid}"
+                            plugInName="Publicationlist"
+                            class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0">
+                        <f:render partial="SelectedOrgUnit/Publication/Citation"
+                                  arguments="{citations: publication.details.citations, selectedCitationStyle: settings.citationStyle}"/>
+                    </f:link.action>
+                </f:then>
+                <f:else>
+                    <f:render partial="SelectedOrgUnit/Publication/Citation"
+                              arguments="{citations: publication.details.citations, selectedCitationStyle: settings.citationStyle}"/>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <p class="flex flex-wrap items-left text-gray-700">
+                <strong class="m-0">
+                    <f:if condition="{publication.uid} && {settings.orgUnits.publicationTargetPageUid}">
+                        <f:then>
+                            <f:link.action
+                                    action="show"
+                                    controller="Publication"
+                                    pageUid="{settings.orgUnits.publicationTargetPageUid}"
+                                    arguments="{publication: publication.uid}"
+                                    plugInName="Publicationlist"
+                                    class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0">
+                                {publication.title}
+                            </f:link.action>
+                        </f:then>
+                        <f:else>
+                            {publication.title}
+                        </f:else>
+                    </f:if>
+                </strong>
+                <f:for each="{publication.details.persons}" as="person" key="personIndex">
+                    <span class="m-0">,&nbsp;</span>
+                    <f:render partial="Publication/List/Person" arguments="{person: person}"/>
+                </f:for>
+                <f:if condition="{publication.details.journal}">
+                    <span class="m-0">,&nbsp;</span>
+                    <span class="m-0">
+                        {publication.details.journal.title}, {publication.details.journal.releaseYear}, S. {publication.details.journal.pageRange}
+                    </span>
+                </f:if>
+            </p>
+        </f:else>
+    </f:if>
+</f:if>
+
+</html>

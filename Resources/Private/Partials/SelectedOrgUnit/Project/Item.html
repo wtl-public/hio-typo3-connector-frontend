@@ -1,0 +1,32 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{project}">
+    <p class="flex flex-wrap items-left text-gray-700">
+        <strong class="m-0">
+            <f:if condition="{project.uid} && {settings.persons.projectTargetPageUid}">
+                <f:then>
+                    <f:link.action
+                            action="show"
+                            controller="Project"
+                            pageUid="{settings.persons.projectTargetPageUid}"
+                            arguments="{project: project.uid}"
+                            plugInName="Projectlist"
+                            class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0">
+                       {project.title}
+                    </f:link.action>
+                </f:then>
+                <f:else>
+                    {project.title}
+                </f:else>
+            </f:if>
+        </strong>
+        <f:for each="{project.details.persons}" as="person" key="personIndex">
+            <span class="m-0">,&nbsp;</span>
+            <f:render partial="Project/List/Person" arguments="{person: person}"/>
+        </f:for>
+    </p>
+</f:if>
+
+</html>

@@ -1,0 +1,137 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:flashMessages/>
+    <f:if condition="{person}">
+        <h1 class="mt-2 font-semibold text-3xl sm:text-5xl xl:text-4xl p-4 mb-4">
+            <span class="uppercase text-sm block mb-2 font-normal"><f:translate key="hio.show.person.profilePage" extensionName="HioTypo3ConnectorWtl" /></span>
+            {person.name}
+        </h1>
+        <f:if condition="{person.orgUnits}">
+            <div class="mx-auto w-full mb-4">
+                <div class="bg-white rounded">
+                    <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:pl-6">
+                        <f:render partial="Person/OrgUnit" arguments="{person: person}"/>
+                    </div>
+                </div>
+            </div>
+        </f:if>
+        <f:if condition="{person.publications}">
+            <f:then>
+                <div class="mx-auto w-full grow flex flex-col md:flex-row gap-4 mb-4">
+                    <div class="bg-white grow flex-1 xl:flex rounded">
+                        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+                            <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 collapse h-0 sm:visible sm:h-auto">
+                                <f:translate key="hio.show.person.publications" extensionName="HioTypo3ConnectorWtl" />
+                            </h2>
+                            <f:render partial="SelectedPerson/PublicationList" arguments="{publications: person.publications}"/>
+                        </div>
+                    </div>
+
+                    <f:if condition="{settings.showTypeStatistics} || {settings.showCoAuthorshipStatistics}">
+                        <div class="bg-white shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 rounded order-first sm:order-last">
+                            <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 visible sm:hidden">
+                                <f:translate key="hio.show.person.publications" extensionName="HioTypo3ConnectorWtl" />
+                            </h2>
+                            <f:if condition="{typeStatistics} && {settings.showTypeStatistics}">
+                                <f:render partial="SelectedPerson/Publication/TypeStats" arguments="{typeStats: typeStatistics}"/>
+                            </f:if>
+                            <f:if condition="{coAuthorshipStatistics} && {settings.showCoAuthorshipStatistics}">
+                                <f:render partial="SelectedPerson/Publication/CoAuthorshipStats" arguments="{coAuthorshipStats: coAuthorshipStatistics}"/>
+                            </f:if>
+                        </div>
+                    </f:if>
+                </div>
+            </f:then>
+        </f:if>
+
+        <f:if condition="{person.projects}">
+            <f:then>
+                <div class="mx-auto w-full grow flex flex-col md:flex-row gap-4 mb-4">
+                    <div class="bg-white grow flex-1 xl:flex rounded">
+                        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+                            <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 collapse h-0 sm:visible sm:h-auto">
+                                <f:translate key="hio.show.person.projects" extensionName="HioTypo3ConnectorWtl" />
+                            </h2>
+                            <f:render partial="SelectedPerson/ProjectList" arguments="{projects: person.projects}"/>
+                        </div>
+                    </div>
+
+                    <f:if condition="{settings.showProjectStatusStatistics}">
+                        <div class="bg-white shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 rounded order-first sm:order-last">
+                            <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 visible sm:hidden">
+                                <f:translate key="hio.show.person.projects" extensionName="HioTypo3ConnectorWtl" />
+                            </h2>
+                            <f:if condition="{projectStatusStatistics} && {settings.showProjectStatusStatistics}">
+                                <f:render partial="SelectedPerson/Project/StatusStats"
+                                          arguments="{projectStatusStatistics: projectStatusStatistics}"/>
+                            </f:if>
+                        </div>
+                    </f:if>
+                </div>
+            </f:then>
+        </f:if>
+
+        <f:if condition="{person.patents}">
+            <f:then>
+                <div class="mx-auto w-full grow flex flex-col md:flex-row gap-4 mb-4">
+                    <div class="bg-white grow flex-1 xl:flex rounded">
+                        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+                            <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 collapse h-0 sm:visible sm:h-auto">
+                                <f:translate key="hio.show.person.patents" extensionName="HioTypo3ConnectorWtl" />
+                            </h2>
+                            <f:render partial="SelectedPerson/PatentList" arguments="{patents: person.patents}"/>
+                        </div>
+                    </div>
+
+                    <div class="bg-white shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 rounded order-first sm:order-last"></div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <f:if condition="{person.details.dynamicObjects}">
+            <f:then>
+                <div class="mx-auto w-full grow flex flex-col md:flex-row gap-4">
+                    <div class="bg-white grow flex-1 xl:flex rounded">
+                        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+                            <h2 class="font-normal text-3xl sm:text-4xl border-b border-gray-200 pb-6 mb-4 collapse h-0 sm:visible sm:h-auto">
+                                <f:translate key="hio.show.person.dynamicObjects" extensionName="HioTypo3ConnectorWtl" />
+                            </h2>
+                            <f:render partial="DynamicObjects" arguments="{dynamicObjects: person.details.dynamicObjects}"/>
+                        </div>
+                    </div>
+
+                    <div class="bg-white shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 rounded order-first sm:order-last"></div>
+                </div>
+            </f:then>
+        </f:if>
+    </f:if>
+
+    <div class="px-4 py-5 sm:p-6">
+        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+            <div class="-mt-px flex w-0 flex-1">
+                <f:link.action
+                        action="index"
+                        addQueryString="untrusted"
+                        arguments="{currentPageNumber:currentPageNumber, filter: filter}"
+                        class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                         data-slot="icon">
+                        <path fill-rule="evenodd"
+                              d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                    <f:translate key="ShowBackToList" extensionName="HioTypo3Connector"/>
+                </f:link.action>
+            </div>
+        </nav>
+    </div>
+
+</f:section>
+
+</html>

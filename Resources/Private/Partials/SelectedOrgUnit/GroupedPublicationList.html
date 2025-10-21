@@ -1,0 +1,23 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{publications}">
+    <f:then>
+        <div class="max-w-3xl xl:max-w-5xl text-base/7">
+            <f:groupedFor each="{publications}" as="publicationsOfThisType" groupBy="{settings.groupBy}"
+                          groupKey="publicationType">
+                <h3 class="text-2xl xl:text-3xl font-semibold text-left">{publicationType}</h3>
+                <ul class="list-none">
+                    <f:for each="{publicationsOfThisType}" as="publication">
+                        <li class="py-1">
+                            <f:render partial="SelectedOrgUnit/Publication/Item" arguments="{publication: publication, settings: settings}"/>
+                        </li>
+                    </f:for>
+                </ul>
+            </f:groupedFor>
+        </div>
+    </f:then>
+</f:if>
+
+</html>

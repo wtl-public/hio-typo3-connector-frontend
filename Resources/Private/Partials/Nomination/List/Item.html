@@ -1,0 +1,22 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{nomination.details}">
+    <li class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
+        <div>
+            <p class="text-lg font-semibold leading-6 text-gray-900 py-0">
+                <f:link.action
+                        action="show"
+                        addQueryString="untrusted"
+                        arguments="{nomination: nomination.uid, currentPageNumber: currentPageNumber, filter:filter}"
+                        class="hover:underline"
+                >
+                    {nomination.title}
+                </f:link.action>
+            </p>
+        </div>
+    </li>
+</f:if>
+
+</html>

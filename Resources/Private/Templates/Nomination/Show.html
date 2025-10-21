@@ -1,0 +1,37 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:flashMessages/>
+    <f:if condition="{nomination.details}">
+        <div class="bg-white px-4 py-6 lg:p-8">
+            <div class="text-base/7 text-gray-700">
+                <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{nomination.title}</h1>
+            </div>
+
+        </div>
+    </f:if>
+    <div class="px-4 py-5 sm:p-6">
+        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+            <div class="-mt-px flex w-0 flex-1">
+                <f:link.action
+                        action="index"
+                        addQueryString="untrusted"
+                        arguments="{currentPageNumber:currentPageNumber, filter:filter}"
+                        class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                        <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
+                    </svg>
+                    <f:translate key="ShowBackToList" extensionName="HioTypo3Connector" />
+                </f:link.action>
+            </div>
+        </nav>
+    </div>
+
+</f:section>
+
+</html>

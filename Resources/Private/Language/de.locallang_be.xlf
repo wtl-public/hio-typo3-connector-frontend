@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector_wtl/Resources/Private/Language/locallang.xlf" date="2025-07-31T00:00:00Z" product-name="hio_typo3_connector_wtl">
+        <header/>
+        <body>
+
+            <trans-unit id="hio.featuredProjects.title" resname="hio.featuredProjects.title">
+                <source>Featured projects</source>
+                <target>Ausgewählte Projekte</target>
+            </trans-unit>
+            <trans-unit id="hio.featuredProjects.description" resname="hio.featuredProjects.description">
+                <source>A grid list of featured research projects</source>
+                <target>Eine Grid-Liste ausgewählter Forschungsprojekte</target>
+            </trans-unit>
+            <trans-unit id="hio.featuredProjects.contentColumn" resname="hio.featuredProjects.contentColumn">
+                <source>Selected featured research projects</source>
+                <target>Ausgewählte Forschungsprojekte</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.type.featuredProject.title" resname="hio.tt_content.type.featuredProject.title">
+                <source>Featured project</source>
+                <target>Ausgewähltes Projekt</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredProject.image.label" resname="hio.tt_content.palette.featuredProject.image.label">
+                <source>Featured Image</source>
+                <target>Ausgewähltes Bild</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredProject.image.description" resname="hio.tt_content.palette.featuredProject.image.description">
+                <source>Please select an image for the featured project</source>
+                <target>Bitte wählen Sie ein Bild für das ausgewählte Projekt</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredProject.project.label" resname="hio.tt_content.palette.featuredProject.project.label">
+                <source>Featured Project</source>
+                <target>Ausgewähltes Projekt</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredProject.project.description" resname="hio.tt_content.palette.featuredProject.project.description">
+                <source>Please select a featured project (max 1)</source>
+                <target>Bitte wählen Sie ein ausgewähltes Projekt (max. 1)</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.type.featuredProject.title" resname="hio.tt_content.type.featuredProject.title">
+                <source>Featured Project</source>
+                <target>Ausgewähltes Projekt</target>
+            </trans-unit>
+
+            <trans-unit id="hio.featuredPublications.title" resname="hio.featuredPublications.title">
+                <source>Featured publications</source>
+                <target>Ausgewählte Publikationen</target>
+            </trans-unit>
+            <trans-unit id="hio.featuredPublications.description" resname="hio.featuredPublications.description">
+                <source>A grid list of featured research publications</source>
+                <target>Eine Grid-Liste ausgewählter Forschungs-Publikationen</target>
+            </trans-unit>
+            <trans-unit id="hio.featuredPublications.contentColumn" resname="hio.featuredPublications.contentColumn">
+                <source>Selected featured publications</source>
+                <target>Ausgewählte Publikationen</target>
+            </trans-unit>
+
+            <trans-unit id="hio.tt_content.type.featuredPublication.title" resname="hio.tt_content.type.featuredPublication.title">
+                <source>Featured publication</source>
+                <target>Ausgewählte Publikation</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredPublication.image.label" resname="hio.tt_content.palette.featuredPublication.image.label">
+                <source>Featured Image</source>
+                <target>Ausgewähltes Bild</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredPublication.image.description" resname="hio.tt_content.palette.featuredPublication.image.description">
+                <source>Please select an image for the featured publication</source>
+                <target>Bitte wählen Sie ein Bild für die ausgewählte Publikation</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredPublication.publication.label" resname="hio.tt_content.palette.featuredPublication.publication.label">
+                <source>Featured Publication</source>
+                <target>Ausgewählte Publikation</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.palette.featuredPublication.publication.description" resname="hio.tt_content.palette.featuredPublication.publication.description">
+                <source>Please select a featured publication (max 1)</source>
+                <target>Bitte wählen Sie eine ausgewählte Publikation (max. 1)</target>
+            </trans-unit>
+            <trans-unit id="hio.tt_content.type.featuredPublication.title" resname="hio.tt_content.type.featuredPublication.title">
+                <source>Featured Publication</source>
+                <target>Ausgewählte Publikation</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

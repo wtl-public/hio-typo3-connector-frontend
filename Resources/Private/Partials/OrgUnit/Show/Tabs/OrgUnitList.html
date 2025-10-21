@@ -1,0 +1,23 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{children}">
+        <f:then>
+            <div class="overflow-hidden">
+                <ul role="list" class="divide-y divide-gray-100">
+                <f:for each="{children}" as="orgUnit">
+                    <f:render partial="OrgUnit/Show/Tabs/OrgUnitListItem" arguments="{orgUnit:orgUnit}" />
+                </f:for>
+                </ul>
+            </div>
+    </f:then>
+
+    <f:else>
+        <div class="no-comment alert alert-info">
+            <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/orgUnit.xlf:noOrgUnits"/>
+        </div>
+    </f:else>
+</f:if>
+
+</html>

@@ -1,0 +1,32 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{paginator.paginatedItems}">
+    <f:then>
+        <div class="overflow-hidden">
+            <ul role="list" class="divide-y divide-gray-100">
+                <f:for each="{paginator.paginatedItems}" as="nomination">
+                    <f:render partial="Nomination/List/Item"
+                              arguments="{nomination:nomination, currentPageNumber: paginator.currentPageNumber, action:action, filter:filter}"/>
+                </f:for>
+            </ul>
+            <f:if condition="{pagination}">
+                <f:then>
+                    <div class="py-4">
+                        <f:render partial="Pagination/Pagination"
+                                  arguments="{pagination: pagination, action:action, filter:filter}"/>
+                    </div>
+                </f:then>
+            </f:if>
+        </div>
+    </f:then>
+
+    <f:else>
+        <div class="no-comment alert alert-info">
+            <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/nomination.xlf:noNominations"/>
+        </div>
+    </f:else>
+</f:if>
+
+</html>

@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Wtl\HioTypo3ConnectorWtl\:
+    resource: '../Classes/*'
+  Wtl\HioTypo3ConnectorWtl\DataProcessing\ProjectDataProcessor:
+    tags:
+      - name: 'data.processor'
+        identifier: 'featured-project'
+  Wtl\HioTypo3ConnectorWtl\Backend\Preview\FeaturedProjectPreviewRenderer:
+    tags:
+      - name: 'preview.renderer'
+        identifier: 'featured-project-renderer'
+  Wtl\HioTypo3ConnectorWtl\DataProcessing\PublicationDataProcessor:
+    tags:
+      - name: 'data.processor'
+        identifier: 'featured-publication'
+  Wtl\HioTypo3ConnectorWtl\Backend\Preview\FeaturedPublicationPreviewRenderer:
+    tags:
+      - name: 'preview.renderer'
+        identifier: 'featured-publication-renderer'

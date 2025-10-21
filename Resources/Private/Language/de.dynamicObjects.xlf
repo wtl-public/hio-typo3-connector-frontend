@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector_wtl/Resources/Private/Language/Modules/dynamicObjects.xlf" date="2024-10-17T00:00:00Z" product-name="hio_typo3_connector_wtl">
+        <header/>
+        <body>
+
+            <trans-unit id="fs.res.publication.Accounting.articleNumber" resname="fs.res.publication.Accounting.articleNumber">
+                <source>Article number</source>
+                <target>Artikelnummer</target>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.completionDate" resname="fs.res.publication.Accounting.completionDate">
+                <source>Completion date</source>
+                <target>Abgabedatum</target>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.dataPrivacyProtection" resname="fs.res.publication.Accounting.dataPrivacyProtection">
+                <source>Data privacy protection</source>
+                <target>Datenschutz</target>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.identificationNumber" resname="fs.res.publication.Accounting.identificationNumber">
+                <source>Identification number</source>
+                <target>Identifikationsnummer</target>
+            </trans-unit>
+            <trans-unit id="fs.res.publication.Accounting.numberOfDownloads" resname="fs.res.publication.Accounting.numberOfDownloads">
+                <source>Number of downloads</source>
+                <target>Anzahl der Downloads</target>
+            </trans-unit>
+
+            <trans-unit id="fs.res.project.Accounting.accountStatementUpdates" resname="fs.res.project.Accounting.accountStatementUpdates">
+                <source>Account statement updates</source>
+                <target>Kontoaktualisierungen</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.accountingRecordSource" resname="fs.res.project.Accounting.accountingRecordSource">
+                <source>Accounting record source</source>
+                <target>Konto-Datenquelle</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.archiveNumber" resname="fs.res.project.Accounting.archiveNumber">
+                <source>Archive number</source>
+                <target>Archivnummer</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.bookingDeadline" resname="fs.res.project.Accounting.bookingDeadline">
+                <source>Booking deadline</source>
+                <target>Buchungsschluss</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.bookingWeekDay" resname="fs.res.project.Accounting.bookingWeekDay">
+                <source>Booking week day</source>
+                <target>Buchungstag</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.isVATincluded" resname="fs.res.project.Accounting.isVATincluded">
+                <source>Is VAT included</source>
+                <target>Enthält MwSt.</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.maxHours" resname="fs.res.project.Accounting.maxHours">
+                <source>Maximum hours</source>
+                <target>Maximale Stunden</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Accounting.numberOfProjectMembers" resname="fs.res.project.Accounting.numberOfProjectMembers">
+                <source>Number of project members</source>
+                <target>Anzahl Projektbeteiligte</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.BasicData.finishDate" resname="fs.res.project.BasicData.finishDate">
+                <source>Finish date</source>
+                <target>Abschlussdatum</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Planning.bookingState" resname="fs.res.project.Planning.bookingState">
+                <source>Booking state</source>
+                <target>Buchungsstatus</target>
+            </trans-unit>
+            <trans-unit id="fs.res.project.Planning.numberOfMembers" resname="fs.res.project.Planning.numberOfMembers">
+                <source>Number of members</source>
+                <target>Anzahl Mitglieder</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

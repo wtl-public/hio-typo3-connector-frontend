@@ -1,0 +1,176 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:flashMessages/>
+    <f:if condition="{project.details}">
+        <div class="flex items-stretch justify-between py-4 px-0">
+            <h1 class="mt-2 font-normal text-3xl sm:text-4xl px-4">
+                <f:translate key="project.show.title" extensionName="HioTypo3ConnectorWtl"/>
+            </h1>
+        </div>
+        <div class="bg-white px-4 py-6 lg:p-8">
+            <div class="text-base/7 text-gray-700">
+                <p class="font-semibold text-gray-600 py-0">
+                    <f:if condition="{project.details.type}">
+                        {project.details.type}
+                        &middot;
+                    </f:if>
+                    <f:if condition="{project.details.status}">
+                        {project.details.status.name}
+                        &middot;
+                    </f:if>
+                    <f:format.date format="d.m.Y" >{project.details.startDate}</f:format.date> - <f:format.date format="d.m.Y" >{project.details.endDate}</f:format.date>
+                </p>
+                <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{project.title}</h1>
+            </div>
+
+            <div class="mt-6 border-t border-gray-100">
+                <dl class="divide-y divide-gray-100">
+                    <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.project.projectLead" /></dt>
+                        <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            <f:for each="{project.details.persons}" as="person">
+                                <span>
+                                    <f:if condition="{person.role} == {settings.projectDetails.persons.filterProjectLead}">
+                                        <f:render partial="Project/Show/PersonLink" arguments="{person: person}" />
+                                    </f:if>
+                                </span>
+                            </f:for>
+                        </dd>
+                    </div>
+                    <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.project.objective" /></dt>
+                        <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {project.details.objective}
+                        </dd>
+                    </div>
+                    <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <dt class="text-sm/6 font-medium text-gray-900">
+                            <f:if condition="{project.details.subjectAreas -> f:count()} == 1">
+                                <f:then>
+                                    <f:translate key="hio.show.project.subjectArea" />
+                                </f:then>
+                                <f:else>
+                                    <f:translate key="hio.show.project.subjectAreas" />
+                                </f:else>
+                            </f:if>
+                        </dt>
+                        <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            <f:for each="{project.details.subjectAreas}" as="subject" key="index">
+                                <p class="py-0">
+                                    {subject.name}
+                                </p>
+                            </f:for>
+                        </dd>
+                    </div>
+                    <f:if condition="{project.details.researchAreas}">
+                        <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                            <dt class="text-sm/6 font-medium text-gray-900">
+                                <f:if condition="{project.details.researchAreas -> f:count()} == 1">
+                                    <f:then>
+                                        <f:translate key="hio.show.project.researchArea" />
+                                    </f:then>
+                                    <f:else>
+                                        <f:translate key="hio.show.project.researchAreas" />
+                                    </f:else>
+                                </f:if>
+                            </dt>
+                            <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                <f:for each="{project.details.researchAreas}" as="researchArea" key="index">
+                                    <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 mb-2 mr-1 text-sm font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{researchArea.name}</span>
+                                </f:for>
+                            </dd>
+                        </div>
+                    </f:if>
+
+                    <f:if condition="{project.details.dynamicObjects}">
+                        <f:then>
+                            <f:render partial="DynamicObjects" arguments="{dynamicObjects: project.details.dynamicObjects}" />
+                        </f:then>
+                    </f:if>
+
+                </dl>
+            </div>
+
+            <div>
+                <div class="sm:hidden">
+                    <label for="tabs" class="sr-only"><f:translate key="hio.show.project.selectTab" /></label>
+                    <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+                    <select onchange="openTab(event, this.value)" id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                        <option selected value="tab-project-abstract"><f:translate key="hio.show.project.abstract" /></option>
+                        <option value="tab-project-cooperation"><f:translate key="hio.show.project.cooperation" /></option>
+                        <option value="tab-project-downloads"><f:translate key="hio.show.project.downloads" /></option>
+                    </select>
+                </div>
+                <div class="hidden sm:block">
+                    <div class="border-b border-gray-200">
+                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                            <a href="#" onclick="openTab(event, 'tab-project-abstract')"  class="tab-project whitespace-nowrap border-b-2 border-gray-400 px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 active:border-gray-500"><f:translate key="hio.show.project.abstract" /></a>
+                            <a href="#" onclick="openTab(event, 'tab-project-cooperation')" class="tab-project whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"><f:translate key="hio.show.project.cooperation" /></a>
+                            <a href="#" onclick="openTab(event, 'tab-project-downloads')" class="tab-project whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"><f:translate key="hio.show.project.downloads" /></a>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="tab-project-abstract" class="tab-content p-4 px-0">
+                    <f:if condition="{project.abstract}">
+                        <div class="text-sm/6 text-gray-700">{project.abstract}</div>
+                    </f:if>
+                </div>
+
+                <div id="tab-project-cooperation" class="tab-content p-4 hidden px-0">
+                    <div class="text-sm/6 text-gray-700"><f:translate key="hio.show.project.noCooperation" /></div>
+                </div>
+
+                <div id="tab-project-downloads" class="tab-content p-4 hidden px-0">
+                    <div class="text-sm/6 text-gray-700"><f:translate key="hio.show.project.noDownloads" /></div>
+                </div>
+
+
+            </div>
+            <script>
+                function openTab(evt, tabName) {
+                    evt.preventDefault();
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tab-content");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].classList.add("hidden");
+                    }
+                    tablinks = document.getElementsByClassName("tab-project");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].classList.remove("border-gray-500");
+                        tablinks[i].classList.add("border-transparent");
+                    }
+                    document.getElementById(tabName).classList.remove("hidden");
+                    evt.currentTarget.classList.add("border-gray-500");
+                    evt.currentTarget.classList.remove("border-transparent");
+                }
+            </script>
+
+        </div>
+    </f:if>
+    <div class="px-4 py-5 sm:p-6">
+        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+            <div class="-mt-px flex w-0 flex-1">
+                <f:link.action
+                        action="index"
+                        addQueryString="untrusted"
+                        arguments="{currentPageNumber:currentPageNumber, filter:filter}"
+                        class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                        <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
+                    </svg>
+                    <f:translate key="ShowBackToList" extensionName="HioTypo3Connector" />
+                </f:link.action>
+            </div>
+        </nav>
+    </div>
+
+</f:section>
+
+</html>

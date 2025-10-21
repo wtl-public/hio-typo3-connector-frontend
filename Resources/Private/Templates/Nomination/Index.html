@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:flashMessages />
+
+    <h1 class="mt-2 font-normal text-3xl sm:text-4xl px-4">
+        <f:translate key="nomination.index.title" extensionName="HioTypo3ConnectorWtl"/>
+    </h1>
+
+    <div class="mx-auto w-full grow flex flex-col md:flex-row gap-4 mb-4">
+        <div class="bg-white grow flex-1 xl:flex rounded">
+            <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+                <f:render partial="Nomination/List" arguments="{action:'index', pagination:pagination, paginator:paginator, filter:filter}" />
+            </div>
+        </div>
+
+        <div class="bg-white shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 rounded order-first sm:order-last">
+            <f:render partial="Nomination/List/Filter" arguments="{action:'index', controller:'Nomination', filter:filter}" />
+        </div>
+    </div>
+
+</f:section>
+
+</html>
