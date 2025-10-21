@@ -18,7 +18,7 @@ jobs:
       - name: 'Checkout Release Repo'
         uses: actions/checkout@v4
         with:
-          repository: 'wtl-public/hio-typo3-connector-wtl'
+          repository: 'wtl-public/hio-typo3-connector-frontend'
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           ref: main
           path: hio-release-repo
@@ -48,7 +48,7 @@ jobs:
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
             git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
-            git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector-wtl.git main
+            git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector-frontend.git main
           else
             echo "Keine Änderungen zum Committen."
           fi
@@ -56,7 +56,7 @@ jobs:
       - name: 'Create Release in Release Repo'
         uses: softprops/action-gh-release@v2
         with:
-          repository: 'wtl-public/hio-typo3-connector-wtl'
+          repository: 'wtl-public/hio-typo3-connector-frontend'
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           tag_name: ${{ github.ref_name }}
           name: ${{ github.event.release.name }}
