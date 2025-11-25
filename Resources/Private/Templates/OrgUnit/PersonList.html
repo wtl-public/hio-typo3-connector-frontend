@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:if condition="{orgUnit && orgUnit.patents}">
+        <div class="bg-white px-6 py-6 lg:px-8">
+            <div class="max-w-3xl text-base/7 text-gray-700">
+                <f:render partial="SelectedOrgUnit/PersonList" arguments="{persons: orgUnit.persons, settings: settings}"/>
+            </div>
+        </div>
+    </f:if>
+
+</f:section>
+
+</html>

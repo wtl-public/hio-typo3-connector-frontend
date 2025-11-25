@@ -15,9 +15,9 @@
         <div class="bg-white px-4 py-6 lg:p-8">
             <div class="px-0">
                 <p class="text-base/7 font-semibold text-gray-600 py-0">
-                    {publication.details.type}
+                    {publication.details.publicationType.name}
                     &middot;
-                    {publication.details.resource}
+                    {publication.details.publicationResource.name}
                     &middot;
                     {publication.details.status.name}
                 </p>
@@ -54,7 +54,7 @@
                         <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.publication.globalIdentifiers.doi" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <f:for each="{publication.details.globalIdentifiers}" as="identifier">
-                                <f:if condition="{identifier.type} == 'DOI'">
+                                <f:if condition="{identifier.globalIdentifierType.name} == 'DOI'">
                                     <f:then><a href="https://doi.org/{identifier.id}">{identifier.id}</a></f:then>
                                 </f:if>
                             </f:for>

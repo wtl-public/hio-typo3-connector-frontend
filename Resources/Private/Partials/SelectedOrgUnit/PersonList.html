@@ -1,0 +1,30 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{persons}">
+    <ul class="list-none">
+        <f:for each="{persons}" as="person">
+            <li>
+                <f:if condition="{settings.orgUnits.personTargetPageUid}">
+                    <f:then>
+                        <f:link.action
+                                pageUid="{settings.orgUnits.personTargetPageUid}"
+                                action="show"
+                                addQueryString="untrusted"
+                                arguments="{person: person.objectId}"
+                                class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0"
+                                controller="Person">
+                            {person.name}
+                        </f:link.action>
+                    </f:then>
+                    <f:else>
+                        {person.name}
+                    </f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:if>
+
+</html>

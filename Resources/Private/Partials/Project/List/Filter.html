@@ -54,6 +54,37 @@
             </div>
 
             <div class="flex flex-col mb-4">
+                <label for="budgetSourceTypes" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                    <f:translate key="filter.project.budgetSourceType.label" extensionName="HioTypo3ConnectorWtl"/>
+                </label>
+                <div class="mt-2">
+                    <f:for each="{budgetSourceTypeOptions}" as="budgetSourceTypeOption" iteration="i">
+                        <div class="flex gap-3">
+                            <div class="flex h-6 shrink-0 items-center">
+                                <div class="group grid size-4 grid-cols-1">
+                                    <f:form.checkbox
+                                        class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-wtl-red-600 checked:bg-wtl-red-600 indeterminate:border-wtl-red-600 indeterminate:bg-wtl-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wtl-red-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 dark:border-white/10 dark:bg-white/5 forced-colors:appearance-auto"
+                                        name="budgetSourceTypes"
+                                        multiple="true"
+                                        id="budgetSourceType{i.cycle}"
+                                        property="budgetSourceTypes"
+                                        value="{budgetSourceTypeOption.value}" />
+
+                                    <svg viewBox="0 0 14 14" fill="none" class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25 dark:group-has-[:disabled]:stroke-white/25">
+                                        <path d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-[:checked]:opacity-100" />
+                                        <path d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-[:indeterminate]:opacity-100" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="text-sm/6">
+                                <label for="budgetSourceType{i.cycle}" class="font-medium text-gray-900 dark:text-white">{budgetSourceTypeOption.label}</label>
+                            </div>
+                        </div>
+                    </f:for>
+                </div>
+            </div>
+
+            <div class="flex flex-col mb-4">
                 <fieldset>
                     <legend class="block text-sm/6 font-medium text-gray-900 dark:text-white">
                         <f:translate key="filter.project.startDate.label" extensionName="HioTypo3ConnectorWtl"/>

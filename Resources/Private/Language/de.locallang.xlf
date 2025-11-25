@@ -85,6 +85,10 @@
                 <source>Project type</source>
                 <target>Projekttyp</target>
             </trans-unit>
+            <trans-unit id="filter.project.budgetSourceType.label" resname="filter.project.budgetSourceType.label">
+                <source>Budget source type</source>
+                <target>Mittelherkunft</target>
+            </trans-unit>
 
             <trans-unit id="person.index.title" resname="person.index.title">
                 <source>Persons</source>

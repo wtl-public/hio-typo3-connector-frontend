@@ -64,6 +64,9 @@
             <trans-unit id="filter.project.type.label" resname="filter.project.type.label">
                 <source>Project type</source>
             </trans-unit>
+            <trans-unit id="filter.project.budgetSourceType.label" resname="filter.project.budgetSourceType.label">
+                <source>Budget source type</source>
+            </trans-unit>
 
             <trans-unit id="person.index.title" resname="person.index.title">
                 <source>Persons</source>
