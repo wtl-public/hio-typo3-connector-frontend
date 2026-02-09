@@ -1,0 +1,47 @@
+name: TER release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+#  ter-release:
+#    name: TER release
+#    runs-on: ubuntu-latest
+#    env:
+#      TYPO3_EXTENSION_KEY: 'hio_typo3_connector'
+#      REPOSITORY_URL: 'https://github.com/wtl-public/hio-typo3-connector'
+#      TYPO3_API_TOKEN: ${{ secrets.TYPO3_API_TOKEN }}
+#      TYPO3_API_USERNAME: ${{ secrets.TYPO3_API_USERNAME }}
+#      TYPO3_API_PASSWORD: ${{ secrets.TYPO3_API_PASSWORD }}
+#    if: ${{ github.repository == 'wtl-public/hio-typo3-connector' }} # Stellt sicher, dass die Action nur im Release-Repository ausgeführt wird
+#    steps:
+#      - name: Get the version
+#        id: get_version
+#        run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+#
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '7.4'
+#          extensions: intl, mbstring, xml, soap, zip, curl
+#
+#      - name: Install EXT:tailor
+#        run: composer global require typo3/tailor --prefer-dist --no-progress --no-suggest
+#
+#      - name: Upload EXT:${{ env.EXTENSION_KEY }} as ${{ env.VERSION }} to TER
+#        run: php ~/.composer/vendor/bin/tailor ter:publish ${{ env.VERSION }} --artefact=${{ env.REPOSITORY_URL }}/archive/${{ env.VERSION }}.zip --comment="New release of version ${{ env.VERSION }} - see details, changelog and documentation on ${{ env.REPOSITORY_URL }}"
+
+  packagist-release:
+    name: Packagist release
+    runs-on: ubuntu-latest
+    env:
+      TYPO3_EXTENSION_KEY: 'hio_typo3_connector_wtl'
+      PACKAGIST_PACKAGE_URL: 'https://packagist.org/packages/wtl/hio-typo3-connector-frontend'
+      PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
+    if: ${{ github.repository == 'wtl-public/hio-typo3-connector-frontend' }} # Stellt sicher, dass die Action nur im Release-Repository ausgeführt wird
+    steps:
+      - name: Trigger on tag push
+        id: trigger_tag_push
+        run: curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=webteam-leipzig&apiToken=${{env.PACKAGIST_API_TOKEN}}' -d'{"repository":{"url":"${{env.PACKAGIST_PACKAGE_URL}}"}}'
