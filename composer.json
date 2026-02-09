@@ -1,5 +1,5 @@
 {
-    "name": "wtl/hio-typo3-connector-wtl",
+    "name": "wtl/hio-typo3-connector-frontend",
     "description": "TYPO3 Connector for HISinOne (WTL Demo)",
     "type": "typo3-cms-extension",
     "license": [
