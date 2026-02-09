@@ -17,6 +17,9 @@ jobs:
       TYPO3_API_PASSWORD: ${{ secrets.TYPO3_API_PASSWORD }}
     if: ${{ github.repository == 'wtl-public/hio-typo3-connector-frontend' }} # Stellt sicher, dass die Action nur im Release-Repository ausgeführt wird
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Get the version
         id: get_version
         run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
