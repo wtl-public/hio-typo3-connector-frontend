@@ -33,6 +33,7 @@ if (! defined('TYPO3')) {
         ))
         ->setIcon('tx-hio_typo3_connector_wtl-featured-projects')
         ->setSaveAndCloseInNewContentElementWizard(false)
+        ->setGroup('hio-publisher')
     );
 
     $GLOBALS['TCA']['tt_content']['types']['tx_hiotypo3connectorwtl_featured_projects']['showitem'] = str_replace(
