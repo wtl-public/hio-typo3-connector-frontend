@@ -19,8 +19,8 @@ class FeaturedProjectPreviewRenderer extends StandardContentPreviewRenderer
         
         $otherContentPreview = parent::renderPageModulePreviewContent($item);
         
-        $row = $item->getRecord();
-        $uid = $row['tx_hiotypo3connectorwtl_featured_project'];
+        $record = $item->getRecord();
+        $uid = is_array($record) ? $record['tx_hiotypo3connectorwtl_featured_project'] : $record->get('tx_hiotypo3connectorwtl_featured_project');
         
         if (!$uid) {
             return $otherContentPreview;

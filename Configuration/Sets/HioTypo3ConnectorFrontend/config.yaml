@@ -1,0 +1,5 @@
+name: wtl/hio-typo3-connector-frontend
+label: HIO TYPO3 Connector Frontend
+dependencies:
+  - wtl/hio-typo3-connector
+

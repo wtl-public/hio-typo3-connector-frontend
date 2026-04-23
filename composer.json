@@ -6,10 +6,10 @@
         "GPL-2.0-or-later"
     ],
     "require": {
-        "b13/container": "^3.1.10",
-        "typo3/cms-core": "^12.4 || ^13.0",
-        "typo3/cms-fluid-styled-content": "^12.4 || ^13.4",
-        "wtl/hio-typo3-connector": "^1.0.7 || ^1.1.1"
+        "b13/container": "^3.1.10 || ^3.2.0",
+        "typo3/cms-core": "^12.4 || ^13.0 || ^14.3",
+        "typo3/cms-fluid-styled-content": "^12.4 || ^13.4 || ^14.3",
+        "wtl/hio-typo3-connector": "^1.0.7 || ^1.1.1 || ^1.2.0"
     },
     "autoload": {
         "psr-4": {

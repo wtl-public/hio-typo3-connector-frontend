@@ -19,8 +19,8 @@ class FeaturedPublicationPreviewRenderer extends StandardContentPreviewRenderer
 
         $otherContentPreview = parent::renderPageModulePreviewContent($item);
 
-        $row = $item->getRecord();
-        $uid = $row['tx_hiotypo3connectorwtl_featured_publication'];
+        $record = $item->getRecord();
+        $uid = is_array($record) ? $record['tx_hiotypo3connectorwtl_featured_publication'] : $record->get('tx_hiotypo3connectorwtl_featured_publication');
 
         if (!$uid) {
             return $otherContentPreview;

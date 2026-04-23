@@ -1,0 +1,3 @@
+page.includeCSS.hio_typo3_connector_wtl = EXT:hio_typo3_connector_wtl/Resources/Public/Css/hio_typo3_connector.css
+page.includeJSFooter.hio_typo3_connector_wtl = EXT:hio_typo3_connector_wtl/Resources/Public/Js/hio-connector-wtl.js
+

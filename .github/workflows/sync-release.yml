@@ -31,6 +31,15 @@ jobs:
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
           rsync -av --progress . hio-release-repo/ --exclude .git --exclude hio-release-repo
 
+      - name: 'Set ext_emconf version from ref_name'
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          cd hio-release-repo
+          sed -E -i "s/('version'[[:space:]]*=>[[:space:]]*')[^']*(')/\\1${TAG_NAME}\\2/" ext_emconf.php
+          grep -q "'version' => '${TAG_NAME}'" ext_emconf.php
+      
+      
       - name: 'Configure Git and Push to Release Repo'
         env:
           RELEASE_REPO_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
@@ -47,7 +56,7 @@ jobs:
           
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
-            git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
+            git commit -m "chore: Sync from development release ${{ github.ref_name }}"
             git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector-frontend.git main
           else
             echo "Keine Änderungen zum Committen."

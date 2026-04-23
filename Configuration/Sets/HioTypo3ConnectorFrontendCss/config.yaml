@@ -1,0 +1,5 @@
+name: wtl/hio-typo3-connector-frontend-css
+label: HIO TYPO3 Connector Frontend CSS
+dependencies:
+  - wtl/hio-typo3-connector-frontend
+
