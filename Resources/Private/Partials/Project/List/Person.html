@@ -3,12 +3,13 @@
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{person}">
-    <f:if condition="{person.id} && {settings.publications.personTargetPageUid}">
+    <f:variable name="personUid">{f:if(condition: uid, then: uid, else: person.uid)}</f:variable>
+    <f:if condition="{personUid} && {settings.projects.personTargetPageUid}">
         <f:then>
             <f:link.action action="show"
-                           pageUid="{settings.publications.personTargetPageUid}"
+                           pageUid="{settings.projects.personTargetPageUid}"
                            controller="Person"
-                           arguments="{person: person.id}"
+                           arguments="{person: personUid}"
                            class="text-gray-700 underline hover:text-wtl-red-dark px-0 m-0">{person.name}</f:link.action>
             <span>&nbsp;({person.role})</span>
         </f:then>

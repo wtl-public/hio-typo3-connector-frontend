@@ -8,8 +8,9 @@
             <p class="text-lg font-semibold leading-6 text-gray-900 py-0">
                 <f:link.action
                         action="show"
-                        arguments="{orgUnitObjectId: orgUnit.id}"
-                        addQueryString="untrusted"
+                        pluginName="OrgUnitList"
+                        extensionName="HioTypo3Connector"
+                        arguments="{orgUnit: baseOrgUnit.uid}"
                         class="hover:underline"
                 >
                     {orgUnit.name}

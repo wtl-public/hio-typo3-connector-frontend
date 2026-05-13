@@ -3,13 +3,13 @@
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{person}">
-    <f:if condition="{person.id} && {settings.projects.personTargetPageUid}">
+    <f:if condition="{uid} && {settings.projects.personTargetPageUid}">
         <f:then>
             <p class="py-0">
                 <f:link.action action="show"
                                controller="Person"
                                pageUid="{settings.projects.personTargetPageUid}"
-                               arguments="{person: person.id}"
+                               arguments="{person: uid}"
                                class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0">
                     {person.name}
                 </f:link.action>

@@ -1,5 +1,6 @@
 <html
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:hio="http://typo3.org/ns/Wtl/HioTypo3ConnectorWtl/ViewHelpers"
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{project}">
@@ -22,9 +23,10 @@
                 </f:else>
             </f:if>
         </strong>
-        <f:for each="{project.details.persons}" as="person" key="personIndex">
+        <f:for each="{project.details.persons}" as="detailPerson" key="personIndex">
             <span class="m-0">,&nbsp;</span>
-            <f:render partial="Project/List/Person" arguments="{person: person}"/>
+            <f:variable name="basePerson" value="{hio:findByProperty(haystack: project.persons, property: 'objectId', value: detailPerson.id)}"/>
+            <f:render partial="Project/List/Person" arguments="{person: detailPerson, uid: basePerson.uid}"/>
         </f:for>
     </p>
 </f:if>

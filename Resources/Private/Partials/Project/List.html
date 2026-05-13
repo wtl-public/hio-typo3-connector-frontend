@@ -7,13 +7,13 @@
             <div class="overflow-hidden">
                 <ul role="list" class="divide-y divide-gray-100">
                 <f:for each="{paginator.paginatedItems}" as="project">
-                    <f:render partial="Project/List/Item" arguments="{project:project, currentPageNumber: paginator.currentPageNumber, action:action, searchTerm: searchTerm}" />
+                    <f:render partial="Project/List/Item" arguments="{project:project, currentPageNumber: paginator.currentPageNumber, action:action, searchTerm: searchTerm, filter:filter}" />
                 </f:for>
                 </ul>
                 <f:if condition="{pagination}">
                     <f:then>
                         <div class="py-4">
-                            <f:render partial="Pagination/Pagination" arguments="{pagination: pagination, action:action, searchTerm: searchTerm}" />
+                            <f:render partial="Pagination/Pagination" arguments="{pagination: pagination, action:action, searchTerm: searchTerm, filter:filter}" />
                         </div>
                     </f:then>
                 </f:if>

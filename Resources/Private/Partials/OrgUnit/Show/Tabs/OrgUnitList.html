@@ -1,5 +1,6 @@
 <html
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:hio="http://typo3.org/ns/Wtl/HioTypo3ConnectorWtl/ViewHelpers"
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{children}">
@@ -7,7 +8,8 @@
             <div class="overflow-hidden">
                 <ul role="list" class="divide-y divide-gray-100">
                 <f:for each="{children}" as="orgUnit">
-                    <f:render partial="OrgUnit/Show/Tabs/OrgUnitListItem" arguments="{orgUnit:orgUnit}" />
+                    <f:variable name="baseOrgUnit" value="{hio:findByProperty(haystack: orgUnits, property: 'objectId', value: orgUnit.id)}"/>
+                    <f:render partial="OrgUnit/Show/Tabs/OrgUnitListItem" arguments="{orgUnit: orgUnit, baseOrgUnit: baseOrgUnit}" />
                 </f:for>
                 </ul>
             </div>

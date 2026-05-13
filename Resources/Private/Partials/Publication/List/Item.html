@@ -1,5 +1,6 @@
 <html
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:hio="http://typo3.org/ns/Wtl/HioTypo3ConnectorWtl/ViewHelpers"
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{publication}">
@@ -19,27 +20,26 @@
             <p class="text-lg font-semibold leading-6 text-gray-900 py-0">
                 <f:link.action
                         action="show"
-                        arguments="{publication: publication.uid, currentPageNumber: currentPageNumber, filter:filter}"
-                        addQueryString="untrusted"
+                        arguments="{publication: publication.uid}"
                         class="hover:underline"
                 >
                     {publication.title}
                 </f:link.action>
             </p>
-            <f:if condition="{publication.details.persons}">
+            <f:if condition="{publication.persons}">
                 <p class="py-0 mt-1">
-                    <f:for each="{publication.details.persons}" as="person" key="personIndex">
+                    <f:for each="{publication.details.persons}" as="detailPerson" key="personIndex">
+                        <f:variable name="basePerson" value="{hio:findByProperty(haystack: publication.persons, property: 'objectId', value: detailPerson.id)}"/>
                         <f:if condition="{personIndex} > 0">
                             <f:then>
-                                <span class="p-0">,&nbsp;<f:render partial="Publication/List/Person" arguments="{person: person}" /></span>
+                                <span class="p-0">,&nbsp;<f:render partial="Publication/List/Person" arguments="{person: detailPerson, uid: basePerson.uid }" /></span>
                             </f:then>
                             <f:else>
                                 <span class="p-0">
-                                    <f:render partial="Publication/List/Person" arguments="{person: person}" />
+                                    <f:render partial="Publication/List/Person" arguments="{person: detailPerson, uid: basePerson.uid}" />
                                 </span>
                             </f:else>
                         </f:if>
-
                     </f:for>
                 </p>
             </f:if>

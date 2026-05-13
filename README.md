@@ -8,3 +8,6 @@ Das Theme ist so konzipiert, dass es nahtlos mit der TYPO3-Extension `hio-typo3-
 Für die Darstellung kommt das CSS-Framework Tailwind CSS in Version 3 zum Einsatz, das eine flexible und anpassbare Gestaltung ermöglicht.
 
 Dieses Theme ist als Beispielimplementierung gedacht und kann an die spezifischen Bedürfnisse Ihrer TYPO3-Installation angepasst werden.
+
+➡️ **[Changelog](CHANGELOG.md)** – Alle Änderungen, neue Features und Breaking Changes
+

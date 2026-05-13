@@ -1,0 +1,55 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<a data-hio-back-button
+   href="{f:uri.action(action:'index')}"
+   class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+>
+    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+        <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
+    </svg>
+    <f:translate key="ShowBackToList" extensionName="HioTypo3Connector" />
+</a>
+<f:asset.script identifier="hio-back-button-navigation" position="footer" inline="true">
+    (function () {
+        var referrerHref = null;
+
+        if (document.referrer) {
+            try {
+                var referrerUrl = new URL(document.referrer, window.location.origin);
+                if (referrerUrl.origin === window.location.origin) {
+                    referrerHref = referrerUrl.href;
+                }
+            } catch (error) {
+                referrerHref = null;
+            }
+        }
+
+        document.querySelectorAll('[data-hio-back-button]').forEach(function (button) {
+            if (referrerHref) {
+                button.href = referrerHref;
+            }
+
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                if (referrerHref) {
+                    var fallback = setTimeout(function () {
+                        window.location.href = button.href;
+                    }, 200);
+
+                    window.addEventListener('beforeunload', function () {
+                        clearTimeout(fallback);
+                    }, { once: true });
+                    window.history.back();
+                    return;
+                }
+
+                window.location.href = button.href;
+            });
+        });
+    })();
+</f:asset.script>
+
+</html>

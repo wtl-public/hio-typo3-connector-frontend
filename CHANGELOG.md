@@ -10,6 +10,91 @@ Es stellt Fluid-Templates, Data Processors und Backend-Vorschau-Renderer bereit.
 
 ---
 
+## [1.3.0] – 2026-05-12
+
+### ⚠️ Breaking Change – Link-Handling für Personen und Organisationseinheiten geändert
+
+Bisher wurden Detail-Links (z. B. zur Personen-Detailseite) über die **HISinOne `object_id`**
+als URL-Parameter aufgebaut. Ab dieser Version werden Links über die **TYPO3-interne `uid`**
+des Datensatzes generiert, um sprechende URLs via RouteEnhancer zu ermöglichen.
+
+**Was bedeutet das konkret?**
+
+- Fluid-Templates und Partials, die den alten `objectId`-Parameter zum Aufbau von Links
+  verwendet haben, wurden auf `uid`-basierte Links umgestellt.
+- Bestehende URLs, die eine `object_id` als Parameter enthalten (z. B.
+  `?tx_hiotypo3connector_selectedperson[objectId]=12345`), werden **nicht mehr korrekt
+  aufgelöst** und liefern eine leere Detailseite oder einen 404-Fehler.
+- Dies betrifft insbesondere **gespeicherte/geteilte Links** sowie
+  **externe Verlinkungen** auf Detailseiten.
+
+**Migrationsschritte:**
+
+1. Prüfen, ob eigene Template-Overrides den `objectId`-Parameter verwenden – diese müssen
+   auf `uid` umgestellt werden.
+2. Bekannte Altlinks durch TYPO3-Redirects oder `.htaccess`-Weiterleitungen abfangen.
+3. RouteEnhancer-Konfiguration einrichten (Beispiel siehe
+   `ExampleConfigs/RouteEnhancer.yaml` in `wtl/hio-typo3-connector`).
+
+---
+
+### Hinweise für Redakteure
+
+Für Redakteure ändert sich im täglichen Umgang nichts. Die Detailseiten von Personen,
+Projekten, Publikationen und Organisationseinheiten sind wie gewohnt erreichbar –
+die URLs sind nun jedoch **sprechend** und suchmaschinenfreundlicher (sofern RouteEnhancer
+konfiguriert wurden).
+
+Der neue „Zurück"-Button auf Detailseiten navigiert intelligent: Wurde die Seite aus dem
+gleichen Ursprung aufgerufen, wird der Browser-Verlauf genutzt. Andernfalls wird auf die
+konfigurierte Listenseite verlinkt.
+
+### Hinweise für Agentur-Entwickler
+
+#### TASK: Link-Handling auf uid-Basis und RouteEnhancer-Vorbereitung (HIO-347)
+
+Alle Fluid-Templates und Partials, die Links zu Detailseiten erzeugen, wurden überarbeitet:
+
+- **Personen** (`Person/List/Item.html`, `Person/Show.html`, alle `PersonLink.html`-Partials)
+- **Projekte** (`Project/List/Item.html`, `Project/Show.html`, `Project/List/Person.html`)
+- **Publikationen** (`Publication/List/Item.html`, `Publication/Show.html`,
+  `Publication/List/Person.html`, `Publication/Show/PersonLink.html`)
+- **Organisationseinheiten** (`OrgUnit/List/Item.html`, `OrgUnit/Show.html` und alle
+  zugehörigen Tab-Partials)
+- **SelectedPerson/SelectedOrgUnit**-Partials (Projekt- und Publikations-Items)
+
+Alle Links bauen nun auf der `uid` des Datensatzes auf. In Kombination mit den
+RouteEnhancern aus `ExampleConfigs/RouteEnhancer.yaml`
+(`wtl/hio-typo3-connector`) entstehen daraus sprechende URLs wie
+`/personen/max-mustermann`.
+
+#### Neues Partial: BackButton
+
+Das neue Partial `Resources/Private/Partials/Navigation/BackButton.html` kapselt die
+„Zurück"-Logik für alle Detail-Show-Templates. Es prüft per JavaScript, ob der `document.referrer`
+denselben Ursprung hat, und navigiert entsprechend via `history.back()` oder auf die
+konfigurierte Listenseite. Das Partial wird von allen Show-Templates eingebunden und
+ersetzt die bisherigen inline-Back-Link-Implementierungen.
+
+#### Neuer ViewHelper: FindByPropertyViewHelper
+
+Die neue Klasse `Classes/ViewHelpers/FindByPropertyViewHelper.php` erlaubt es in Fluid,
+ein einzelnes Objekt aus einer Collection anhand einer beliebigen Eigenschaft zu finden:
+
+```html
+{hio:findByProperty(items: orgUnits, property: 'uid', value: someUid)}
+```
+
+Der ViewHelper ist als `hio:findByProperty` registriert und vollständig typsicher
+implementiert.
+
+#### Abhängigkeit auf wtl/hio-typo3-connector 1.3.0
+
+Diese Version setzt `wtl/hio-typo3-connector ^1.3.0` voraus, da die neuen Slugs
+und das uid-basierte Routing im Connector-Paket implementiert wurden.
+
+---
+
 ## [1.2.0] – 2026-04-22
 
 ### Hinweise für Redakteure

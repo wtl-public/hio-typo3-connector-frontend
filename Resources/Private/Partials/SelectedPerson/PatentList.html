@@ -12,8 +12,9 @@
                             <f:link.action
                                     pageUid="{settings.persons.patentTargetPageUid}"
                                     action="show"
-                                    addQueryString="untrusted"
                                     arguments="{patent: patent.uid}"
+                                    extensionName="HioTypo3Connector"
+                                    pluginName="PatentList"
                                     class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0"
                                     controller="Patent">
                                 {patent.title}

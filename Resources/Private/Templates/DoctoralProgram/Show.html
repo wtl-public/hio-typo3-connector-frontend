@@ -1,5 +1,6 @@
 <html
         xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        xmlns:hio="http://typo3.org/ns/Wtl/HioTypo3ConnectorWtl/ViewHelpers"
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:layout name="Default"/>
@@ -39,9 +40,10 @@
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:doctoralProgram.persons" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            <f:for each="{doctoralProgram.details.persons}" as="person">
+                            <f:for each="{doctoralProgram.details.persons}" as="detailPerson">
                                 <span>
-                                    <f:render partial="DoctoralProgram/Show/PersonLink" arguments="{person: person}" />
+                                    <f:variable name="basePerson" value="{hio:findByProperty(haystack: doctoralProgram.persons, property: 'objectId', value: detailPerson.id)}"/>
+                                    <f:render partial="DoctoralProgram/Show/PersonLink" arguments="{person: detailPerson, uid: basePerson.uid}" />
                                 </span>
                             </f:for>
                         </dd>
@@ -104,17 +106,7 @@
     <div class="px-4 py-5 sm:p-6">
         <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
             <div class="-mt-px flex w-0 flex-1">
-                <f:link.action
-                        action="index"
-                        addQueryString="untrusted"
-                        arguments="{currentPageNumber:currentPageNumber, filter:filter}"
-                        class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                >
-                    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                        <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
-                    </svg>
-                    <f:translate key="ShowBackToList" extensionName="HioTypo3Connector" />
-                </f:link.action>
+                <f:render partial="Navigation/BackButton" />
             </div>
         </nav>
     </div>

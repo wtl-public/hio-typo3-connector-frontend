@@ -11,8 +11,7 @@
                         <f:link.action
                                 pageUid="{settings.orgUnits.personTargetPageUid}"
                                 action="show"
-                                addQueryString="untrusted"
-                                arguments="{person: person.objectId}"
+                                arguments="{person: person.uid}"
                                 class="text-gray-700 hover:underline hover:text-wtl-red-dark-500 px-0"
                                 controller="Person">
                             {person.name}
