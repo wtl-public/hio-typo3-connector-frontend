@@ -8,7 +8,7 @@
             <ul role="list" class="divide-y divide-gray-100">
                 <f:for each="{paginator.paginatedItems}" as="nomination">
                     <f:render partial="Nomination/List/Item"
-                              arguments="{nomination:nomination, currentPageNumber: paginator.currentPageNumber, action:action, filter:filter}"/>
+                              arguments="{nomination:nomination}"/>
                 </f:for>
             </ul>
             <f:if condition="{pagination}">

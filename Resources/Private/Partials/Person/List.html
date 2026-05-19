@@ -9,7 +9,7 @@
             <f:for each="{paginator.paginatedItems}" as="person">
                 <f:render
                     partial="Person/List/Item"
-                    arguments="{person:person, currentPageNumber: paginator.currentPageNumber, action:action, filter:filter}" />
+                    arguments="{person:person}" />
             </f:for>
             </ul>
             <f:if condition="{pagination}">

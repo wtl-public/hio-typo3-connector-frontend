@@ -7,7 +7,7 @@
             <div class="overflow-hidden">
                 <ul role="list" class="divide-y divide-gray-100">
                 <f:for each="{paginator.paginatedItems}" as="orgUnit">
-                    <f:render partial="OrgUnit/List/Item" arguments="{orgUnit:orgUnit, currentPageNumber: paginator.currentPageNumber, action:action, filter:filter}" />
+                    <f:render partial="OrgUnit/List/Item" arguments="{orgUnit:orgUnit}" />
                 </f:for>
                 </ul>
                 <f:if condition="{pagination}">
