@@ -1,1 +1,1 @@
-@import 'EXT:hio_typo3_connector_wtl/Configuration/TsConfig/Page/ContentElements/*.tsconfig'
+mod.wizards.newContentElement.wizardItems.hio-connector-children.removeItems := addToList(tx_hiotypo3connectorwtl_featured_project,tx_hiotypo3connectorwtl_featured_publication)

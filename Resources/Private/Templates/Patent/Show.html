@@ -15,21 +15,18 @@
         </div>
         <div class="bg-white px-4 py-6 lg:p-8">
             <div class="text-base/7 text-gray-700">
-                <p class="font-semibold text-gray-600 py-0">
+                <p class="hio-meta-line font-semibold text-gray-600 py-0">
                     <f:if condition="{patent.details.patentNumber}">
-                        No.: {patent.details.patentNumber}
-                        &middot;
+                        <span>No.: {patent.details.patentNumber}</span>
                     </f:if>
                     <f:if condition="{patent.details.status}">
-                        Status: {patent.details.status.name}
-                        &middot;
+                        <span>Status: {patent.details.status.name}</span>
                     </f:if>
                     <f:if condition="{patent.details.registrationDate}">
-                        angemeldet: <f:format.date format="d.m.Y" >{patent.details.registrationDate}</f:format.date>
-                        &middot;
+                        <span>angemeldet: <f:format.date format="d.m.Y" >{patent.details.registrationDate}</f:format.date></span>
                     </f:if>
                     <f:if condition="{patent.details.grantDate}">
-                        erteilt: <f:format.date format="d.m.Y" >{patent.details.grantDate}</f:format.date>
+                        <span>erteilt: <f:format.date format="d.m.Y" >{patent.details.grantDate}</f:format.date></span>
                     </f:if>
                 </p>
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{patent.title}</h1>
@@ -51,7 +48,7 @@
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.patent.description" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {patent.details.description}
+                                <hio:freeText>{patent.details.description}</hio:freeText>
                         </dd>
                     </div>
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">

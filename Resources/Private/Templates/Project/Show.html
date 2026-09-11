@@ -15,16 +15,23 @@
         </div>
         <div class="bg-white px-4 py-6 lg:p-8">
             <div class="text-base/7 text-gray-700">
-                <p class="font-semibold text-gray-600 py-0">
-                    <f:if condition="{project.details.type}">
-                        {project.details.type}
-                        &middot;
+                <p class="hio-meta-line font-semibold text-gray-600 py-0">
+                    <f:if condition="{project.details.projectType.name}">
+                        <span>{project.details.projectType.name}</span>
                     </f:if>
                     <f:if condition="{project.details.status}">
-                        {project.details.status.name}
-                        &middot;
+                        <span>{project.details.status.name}</span>
                     </f:if>
-                    <f:format.date format="d.m.Y" >{project.details.startDate}</f:format.date> - <f:format.date format="d.m.Y" >{project.details.endDate}</f:format.date>
+                    <f:if condition="{project.details.startDate} || {project.details.endDate}">
+                        <span class="hio-date-range">
+                            <f:if condition="{project.details.startDate}">
+                                <span><f:format.date format="d.m.Y" >{project.details.startDate}</f:format.date></span>
+                            </f:if>
+                            <f:if condition="{project.details.endDate}">
+                                <span><f:format.date format="d.m.Y" >{project.details.endDate}</f:format.date></span>
+                            </f:if>
+                        </span>
+                    </f:if>
                 </p>
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{project.title}</h1>
             </div>
@@ -36,7 +43,7 @@
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <f:for each="{project.details.persons}" as="detailPerson">
                                 <span>
-                                    <f:if condition="{detailPerson.role} == {settings.projectDetails.persons.filterProjectLead}">
+                                    <f:if condition="{detailPerson.role.name} == {settings.projectDetails.persons.filterProjectLead}">
                                         <f:variable name="basePerson" value="{hio:findByProperty(haystack: project.persons, property: 'objectId', value: detailPerson.id)}"/>
                                         <f:render partial="Project/Show/PersonLink" arguments="{person: detailPerson, uid: basePerson.uid}" />
                                     </f:if>
@@ -119,8 +126,8 @@
                 </div>
 
                 <div id="tab-project-abstract" class="tab-content p-4 px-0">
-                    <f:if condition="{project.abstract}">
-                        <div class="text-sm/6 text-gray-700">{project.abstract}</div>
+                    <f:if condition="{project.details.description}">
+                        <div class="text-sm/6 text-gray-700"><hio:freeText>{project.details.description}</hio:freeText></div>
                     </f:if>
                 </div>
 

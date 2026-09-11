@@ -10,6 +10,35 @@ Es stellt Fluid-Templates, Data Processors und Backend-Vorschau-Renderer bereit.
 
 ---
 
+## [Unreleased]
+
+### Behoben – Die Projektleitung erscheint wieder, und die Personen-Detailseite lädt
+
+Die API liefert die Personenrolle als Objekt, die Templates lasen sie als Text. Die
+Personen-Detailseite endete darum in einer Fluid-Ausnahme, und der Vergleich mit
+`filterProjectLead` war nie wahr — jede Projekt-Detailseite zeigte eine leere
+Projektleitung. Die Meta-Zeile liest den Projekttyp jetzt unter seinem aktuellen Namen
+`projectType`.
+
+Die Gegenseite dazu ist HIO-387 in `wtl/hio-typo3-connector`. Ohne sie bleiben die drei
+Werte leer, statt dass eine Seite ausfällt.
+
+### Behoben – Die Meta-Zeile zeigt keinen Punkt zu viel
+
+Fehlte ein Feld, blieb sein Trennzeichen stehen — die Publikation zeigte
+`Journalartikel · · validiert`. Jedes Feld steht jetzt in einem eigenen `<span>`, und der
+Punkt kommt aus der Klasse `hio-meta-line` im CSS, mit leerem alternativen Text.
+
+### Behoben – Freitext erscheint wieder, mit seinen Absätzen
+
+Die Projekt-Detailseite las die Beschreibung als `abstract`; die API liefert sie als
+`description`. Der neue ViewHelper `hio:freeText` escaped den Inhalt, macht aus jedem
+Zeilenumbruch ein `<br />` und aus einem Tabulator vier geschützte Leerzeichen. Er greift
+an fünf Stellen: Beschreibung von Projekt, Patent und Promotion, Abstract und Untertitel
+der Publikation.
+
+---
+
 ## [1.3.0] – 2026-05-12
 
 ### ⚠️ Breaking Change – Link-Handling für Personen und Organisationseinheiten geändert

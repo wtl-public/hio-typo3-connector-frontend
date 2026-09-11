@@ -14,21 +14,18 @@
         </div>
         <div class="bg-white px-4 py-6 lg:p-8">
             <div class="text-base/7 text-gray-700">
-                <p class="font-semibold text-gray-600 py-0">
+                <p class="hio-meta-line font-semibold text-gray-600 py-0">
                     <f:if condition="{habilitation.details.status}">
-                        <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.status"  />: {habilitation.details.status.name}
-                        &middot;
+                        <span><f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.status"  />: {habilitation.details.status.name}</span>
                     </f:if>
                     <f:if condition="{habilitation.details.language}">
-                        <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.language" />: {habilitation.details.language.name}
-                        &middot;
+                        <span><f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.language" />: {habilitation.details.language.name}</span>
                     </f:if>
                     <f:if condition="{habilitation.details.startDate}">
-                        <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.startDate" />: <f:format.date format="d.m.Y" >{habilitation.details.startDate}</f:format.date>
-                        &middot;
+                        <span><f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.startDate" />: <f:format.date format="d.m.Y" >{habilitation.details.startDate}</f:format.date></span>
                     </f:if>
                     <f:if condition="{habilitation.details.endDate}">
-                        <f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.endDate" />: <f:format.date format="d.m.Y" >{habilitation.details.endDate}</f:format.date>
+                        <span><f:translate key="LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:habilitation.endDate" />: <f:format.date format="d.m.Y" >{habilitation.details.endDate}</f:format.date></span>
                     </f:if>
                 </p>
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{habilitation.title}</h1>

@@ -4,6 +4,11 @@
         <header/>
         <body>
 
+            <trans-unit id="hio.tt_content.group.containerChildren" resname="hio.tt_content.group.containerChildren">
+                <source>HIO Container Child Elements</source>
+                <target>HIO Container-Kindelemente</target>
+            </trans-unit>
+
             <trans-unit id="hio.featuredProjects.title" resname="hio.featuredProjects.title">
                 <source>Featured projects</source>
                 <target>Ausgewählte Projekte</target>

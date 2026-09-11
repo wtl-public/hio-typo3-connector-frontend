@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /**
+     * Meta line above a detail page title. The second `content` carries an empty
+     * alternative text, so a screen reader announces the values and not the
+     * separator; a browser that does not know the syntax keeps the first.
+     */
+    .hio-meta-line > * + *::before {
+        content: "·";
+        content: "·" / "";
+        margin-inline: 0.4em;
+    }
+
+    /* A range needs its dash only between two dates, never after a single one. */
+    .hio-date-range > * + *::before {
+        content: "–";
+        content: "–" / "";
+        margin-inline: 0.25em;
+    }
+
+    /* The list variant draws the dot the markup used to carry as an inline SVG. */
+    .hio-meta-line--dot > * + *::before {
+        content: "";
+        content: "" / "";
+        display: inline-block;
+        width: 0.125rem;
+        height: 0.125rem;
+        border-radius: 9999px;
+        background-color: currentColor;
+        vertical-align: middle;
+        margin-inline: 0.5rem;
+    }
+}

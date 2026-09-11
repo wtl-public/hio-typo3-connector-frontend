@@ -11,6 +11,16 @@ if (! defined('TYPO3')) {
 
 (static function (): void {
     $lllPrefix = 'LLL:EXT:hio_typo3_connector_wtl/Resources/Private/Language/locallang_be.xlf:hio.';
+    $itemGroup = 'hio-connector-children';
+
+    if (!isset($GLOBALS['TCA']['tt_content']['columns']['CType']['config']['itemGroups'][$itemGroup])) {
+        ExtensionManagementUtility::addTcaSelectItemGroup(
+            'tt_content',
+            'CType',
+            $itemGroup,
+            $lllPrefix . 'tt_content.group.containerChildren'
+        );
+    }
 
     ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
@@ -19,6 +29,7 @@ if (! defined('TYPO3')) {
             'label' => $lllPrefix . 'tt_content.type.featuredProject.title',
             'value' => 'tx_hiotypo3connectorwtl_featured_project',
             'icon' => 'tx-hio_typo3_connector_wtl-featured-project',
+            'group' => $itemGroup,
         ]
     );
 
