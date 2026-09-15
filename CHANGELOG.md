@@ -10,7 +10,7 @@ Es stellt Fluid-Templates, Data Processors und Backend-Vorschau-Renderer bereit.
 
 ---
 
-## [Unreleased]
+## [1.4.0]
 
 ### Behoben – Die Projektleitung erscheint wieder, und die Personen-Detailseite lädt
 
