@@ -10,6 +10,13 @@ Es stellt Fluid-Templates, Data Processors und Backend-Vorschau-Renderer bereit.
 
 ---
 
+## [Latest]
+
+### Behoben – Publikationstitel in Listen und Detailansichten
+
+Die angepassten Templates zeigen den Originaltitel aus den Publikationsdetails.
+Wenn dort kein Titel vorliegt, verwenden sie den gespeicherten Titel.
+
 ## [1.4.0]
 
 ### Behoben – Die Projektleitung erscheint wieder, und die Personen-Detailseite lädt

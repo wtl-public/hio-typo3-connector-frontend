@@ -15,15 +15,15 @@
                 extensionName="HioTypo3Connector"
                 pluginName="PublicationList"
                 argumentsToBeExcludedFromQueryString="{test: 'publication'}"
-                title="{featuredPublication.title}"
-                aria-label="{featuredPublication.title}"
+                title="{featuredPublication.detailsTitle}"
+                aria-label="{featuredPublication.detailsTitle}"
         >
             <div class="relative overflow-hidden h-80">
                 <f:if condition="{image}">
                     <f:then>
                         <f:if condition="{image.0}">
                             <f:then>
-                                <f:media file="{image.0}" alt="{featuredPublication.title}"
+                                <f:media file="{image.0}" alt="{featuredPublication.detailsTitle}"
                                          crop="default"
                                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
                             </f:then>
@@ -40,7 +40,7 @@
             <div class="p-5 h-[10rem]">
                 <div class="flex justify-between items-start">
                     <div>
-                        <h3 class="text-lg font-bold text-gray-800">{featuredPublication.title}</h3>
+                        <h3 class="text-lg font-bold text-gray-800">{featuredPublication.detailsTitle}</h3>
                         <p class="text-gray-500 text-sm">
                             <span class="font-normal"><f:translate key="hio.tt_content.type.featuredPublication.type" extensionName="HioTypo3ConnectorWtl" />: </span>{featuredPublication.type}
                             <f:if condition="{featuredPublication.releaseYear}">

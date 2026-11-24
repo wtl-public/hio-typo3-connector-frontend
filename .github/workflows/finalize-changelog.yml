@@ -1,0 +1,31 @@
+name: Finalize changelog
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.repository == 'webteam-leipzig/hio-typo3-connector-wtl'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out development main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set changelog version from tag
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          escaped_tag=$(printf '%s' "$TAG_NAME" | sed 's/[\&|]/\\&/g')
+          sed -i "0,/^## \[Latest\]$/s|^## \[Latest\]$|## [$escaped_tag]|" CHANGELOG.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- CHANGELOG.md
+          git commit -m "Document release ${TAG_NAME} in changelog"
+          git push origin HEAD:refs/heads/main
